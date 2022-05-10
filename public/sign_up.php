@@ -91,7 +91,24 @@ if(isset($_POST['sign-up'])){
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
-              <a class="nav-link" href="index.php">Home</a>
+              <a class="nav-link " href="index.php">Home</a>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle active" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  User
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                  <li><a class="dropdown-item active" href="sign_up.php">Create Account</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="login.php">Login</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="logout.php">Logout</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="contact_us.php">Contact Us</a></li>
+                 
+                  
+                </ul>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="about.php">About</a>
@@ -100,39 +117,7 @@ if(isset($_POST['sign-up'])){
               <a class="nav-link " href="our_services.php">Services</a>
             </li>
             
-            <li class="nav-item">
-              <a
-                class="nav-link "
-                
-                href="contact_us.php"
-                >Contact</a
-              >
-            </li>
-            <li class="nav-item">
-              <a
-                class="nav-link "
-                aria-current="page"
-                href="login.php"
-                >Login</a
-              >
-            </li>
-            <li class="nav-item">
-              <a
-                class="nav-link active"
-                
-                href="sign_up.php"
-                >Sign up</a
-              >
-            </li>
-            <li class="nav-item">
-              <a
-                class="nav-link "
-                aria-current="page"
-                href="logout.php"
-                >Logout</a
-              >
-            </li>
-            
+           
           </ul>
         </div>
       </div>

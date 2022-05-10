@@ -1,48 +1,34 @@
-<?php
-include("../../includes/initialize.php");
-$sess = new Session();
-$services = new Service();
-// echo "This is my id:" .$sess->getId();
-// echo"<br/>";
-// echo "This is my name: ".$sess->getFName();
-// echo "<br/>";
-// echo "This is my role: ".$sess->getRole();
-$role = $sess->getRole();
-//$sess->check_user_login($role,"Customer");
-$s1 = $services->getAllServices();
-
-//print_r($service_array);
-?>
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!--Bootstrapcss link-->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
-      crossorigin="anonymous"
-    />
-     <!--font awesome-->
-     <link
-     rel="stylesheet"
-     href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
-     integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
-     crossorigin="anonymous"
-   />
-    <!--Custom CSS link-->
-    <link rel="icon" href="../icons/dumbbell.png" type="image/png" />
-    <link rel="stylesheet" href="../css/style.css" />
-    <title>View Services</title>
-    <!--Internal CSS-->
-    <style>
-
-    </style>
-  </head> 
+<head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!--Bootstrapcss link-->
+        <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+        crossorigin="anonymous"
+        />
+        <!--font awesome-->
+        <link
+        rel="stylesheet"
+        href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+        integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+        crossorigin="anonymous"
+        />
+        <!--Custom CSS link-->
+        <link rel="icon" href="../icons/dumbbell.png" type="image/png" />
+        <link rel="stylesheet" href="../css/style.css" />
+        <!--Internal CSS-->
+        <style>
+ 
+        </style>
+        <title>Payment</title>
+</head>
 <body>
-     <!--NavBar-->
+         <!--NavBar-->
      <nav class="navbar navbar-expand-sm navbar-dark bg-danger">
       <div class="container-fluid">
                 <a href="../index.php"
@@ -67,10 +53,13 @@ $s1 = $services->getAllServices();
                 <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav ms-auto">
                                 <li class="nav-item">
-                                <a class="nav-link active" href="create_account.php">Account</a>
+                                <a class="nav-link " href="create_account.php">Account</a>
                                 </li>
                                 <li class="nav-item">
                                 <a class="nav-link" href="view_services.php">Services</a>
+                                </li>
+                                <li class="nav-item">
+                                <a class="nav-link active" href="pay_subscription.php">Payment</a>
                                 </li>
                                 <li class="nav-item">
                                   <a
@@ -85,34 +74,30 @@ $s1 = $services->getAllServices();
                 </div>
         </div>
     </nav>
+     
+    <!---Payment form section--->
+    <section class="forms-section mb-4 mt-4">
+            <div class="container">
+                    <div class="row">
+                            <div class="col-md-6 m-auto">
+                                    <div class="card border border-danger">
+                                            <div class="card-header bg-danger text-white">
+                                                    <h2 class="text-center">Pay For Service </h2>
+                                            </div>
+                                            <div class="card-body">
+                                                    <input type="text" class="form-control" name="" id="" placeholder="Please Write Phone Number">
+                                                    <br>
+                                                    <button type="submit" value="" class="btn btn-danger text-white form-control">Pay Here</button>
+                                            </div>
 
-
-    <!---View Services Section-->
-    <section class="view-services-section mt-4 mb-4">
-        <div class="container">
-            <h1 class="text-center">Our Services</h1>
-            <div class="row mb-2">   
-                    <?php foreach($s1 as $service){?>
-                    <div class="col-md-4">
-                        <div class="card">
-                                <div class="card-header">
-                                        <h1 class="text-center"><?php echo $service['service_name'];?></h1>
-                                </div>
-                                <img src="../images/<?php echo $service['pic_name'];?>" class="card-img-top" alt="Profile" height="200">
-                                <div class="card-body">
-                                        <ul class="list-group list-group-flush">
-                                                <li class="text-center list-group-item">$ <?php echo $service["service_price"];?></li>
-                                        </ul>
-                                </div>
-                        </div>
+                                    </div>
+                            </div>
                     </div>
-                    <?php }?>
             </div>
-        </div>
     </section>
-      <!--End View Services  Section-->
+    <!--End Payment Section-->
 
-      <a href="#" class="scrollup  text-dark"><i class="fas fa-arrow-up"></i></a>
+<a href="#" class="scrollup  text-dark"><i class="fas fa-arrow-up"></i></a>
     <!--Footer-->
     <footer id="main-footer" class="bg-danger text-white">
       <div class="container">
