@@ -188,6 +188,14 @@ class User{
                 //return the row containing the id 
                 return $single_user;
         } 
+
+         //function to get users by role
+         public function getUserByRole($role){
+            $stmt = $this->dbConn->prepare('SELECT * FROM '.$this->tableName.' WHERE role = :role');
+            $stmt->execute(['role'=> $role]);
+            $all_trainers = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $all_trainers;
+        }
     
             //function to get user by email address(Will be used to compare email from form with email in db)
         public function getUserByEmail($email){

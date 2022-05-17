@@ -17,7 +17,6 @@ if(isset($_POST['weekly-submission'])){
   $end_date =  date('Y-m-d H:i:s',strtotime($selected_date. "+ {$_POST['weekly']} week"));
   echo $end_date;
   
-  
 }
 
 if(isset($_POST['daily-submission'])){

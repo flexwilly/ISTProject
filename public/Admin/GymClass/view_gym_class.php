@@ -1,3 +1,8 @@
+<?php
+include('../../../includes/initialize.php');
+$gym_class = new GymClass();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -18,20 +23,19 @@
      crossorigin="anonymous"
    />
     <!--Custom CSS link-->
-    <link rel="icon" href="../icons/dumbbell.png" type="image/png" />
-    <link rel="stylesheet" href="../css/style.css" />
-    <title>View Trainees</title>
-    
+    <link rel="icon" href="../../icons/dumbbell.png" type="image/png" />
+    <link rel="stylesheet" href="../../css/style.css" />
+    <title>View Service</title>
   </head> 
 <body>
    <!--NavBar-->
     <nav class="navbar navbar-expand-sm navbar-dark bg-danger">
       <div class="container-fluid">
-                <a href="../index.php"
+                <a href="../../index.php"
                 ><img
                 id="logo"
                 class="rounded-circle m-3"
-                src="../images/lion-50.png"
+                src="../../images/lion-50.png"
                 alt="logo"
                         /></a>
                 <a class="navbar-brand" href="#">Debbs Gym</a>
@@ -49,16 +53,16 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav ms-auto">
                                 <li class="nav-item">
-                                <a class="nav-link active" href="trainer_account.php">Account</a>
+                                <a class="nav-link " href="create_service.php">Create Service</a>
                                 </li>
                                 <li class="nav-item">
-                                <a class="nav-link" href="view_services.php">Services</a>
+                                <a class="nav-link active" href="view_service.php">View Service</a>
                                 </li>
                                 <li class="nav-item">
                                   <a
                                     class="nav-link "
                                     aria-current="page"
-                                    href="../logout.php"
+                                    href="../../logout.php"
                                     >Logout</a
                                   >
                                 </li>
@@ -67,19 +71,47 @@
                 </div>
         </div>
     </nav>
-    <!---View Trainees -->
-    <section class="view-trainees">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-8 m-auto">
-              
-            </div>
-          </div>
-        </div>
-    </section>
-    <!--End View Trainees-->
 
-<a href="#" class="scrollup  text-dark"><i class="fas fa-arrow-up"></i></a>
+    <section class="table-section mt-4 mb-4">
+        <div class="container">
+                <div class="row">
+                          <h1 id="form-header" class="text-center">View All Classes</h1>
+                        <div class="col-md-8 m-auto">
+                                <table id="service-table" class="table table-striped border border-dark">
+                                        <thead class="text-white bg-danger text-center">
+
+                                                <tr>
+                                                        <th id="table-heading" scope="col">Class Name</th>
+                                                        <th id="table-heading" scope="col">Class Description</th>
+                                                        <th id="table-heading" scope="col">Class Image</th>
+                                                        <th id="table-heading" scope ="col" colspan=2>#</th>
+                                                </tr>    
+                                        </thead>
+                                        <tbody class="text-center">
+                                                <?php
+                                                $gym_class_array = $gym_class ->view_all_classes();                                             
+                                                foreach($gym_class_array as $gym){
+                                                echo "<tr class ='col'>
+                                                <td class='form-text'>$gym[gym_class_name]</td>
+                                                <td class='form-text' >$gym[gym_class_desc]</td>
+                                                <td><img class='rounded-circle' src='../../images/$gym[pic_name]'width = '100' height='100'></td>
+                                                <td><a id='form-button' class='btn btn-danger text-white' href='delete_gym_class.php?id=$gym[id]'>Delete</a></td>
+                                                <td><a id='form-button' class='btn btn-success' href='update_gym_class.php?id=$gym[id]'>Update</a></td>
+                                                </tr>"
+                                                ;     
+                                                }
+                                                ?>     
+                                        </tbody>
+                                </table>
+                        </div>
+
+                </div>
+       
+        </div>
+    </section>    
+         <!--Bootstrap JS-->
+        
+         <a href="#" class="scrollup  text-dark"><i class="fas fa-arrow-up"></i></a>
     <!--Footer-->
     <footer id="main-footer" class="bg-danger text-white">
       <div class="container">
@@ -100,19 +132,19 @@
             <h4 class="mb-4">Menu</h4>
             <p>
               <i class="fa fa-home"></i
-              ><a href="../index.php" class="text-white p-2">Home</a>
+              ><a href="../../index.php" class="text-white p-2">Home</a>
             </p>
             <p>
               <i class="fas fa-question-circle"></i
-              ><a href="../about.php" class="text-white p-2">About</a>
+              ><a href="../../about.php" class="text-white p-2">About</a>
             </p>
             <p>
               <i class="fa fa-cog"></i
-              ><a href="../our_services.html" class="text-white p-2">Services</a>
+              ><a href="../../our_services.html" class="text-white p-2">Services</a>
             </p>
             <p>
               <i class="fa fa-envelope"></i
-              ><a href="../contact_us.php" class="text-white p-2">Contact</a>
+              ><a href="../../contact_us.php" class="text-white p-2">Contact</a>
             </p>
           </div>
           <div class="col-md-3 mb-4">
@@ -165,10 +197,6 @@
       //JQuery for setting the current year
       $("#year").text(new Date().getFullYear());
     </script>
-   <script src="../js/scroll_up.js"> </script>
+   <script src="../../js/scroll_up.js"> </script>
   </body>
-</html>
-
-        
-</body>
 </html>
