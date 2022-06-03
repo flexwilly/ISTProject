@@ -1,0 +1,16 @@
+/*Styling the form*/
+.form-title {
+  font-family: "Times New Roman", Times, sans-serif;
+  font-weight: bold;
+  font-style: oblique;
+}
+.form-button {
+  font-family: "Times New Roman", Times, serif;
+  font-style: italic;
+  font-size: 15px;
+}
+.form-field {
+  font-family: "Times New Roman", Times, serif;
+  font-style: normal;
+  font-size: 15px;
+}

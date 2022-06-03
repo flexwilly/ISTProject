@@ -65,6 +65,8 @@ if(isset($_POST['update'])){
     <!--Custom CSS link-->
     <link rel="icon" href="../../icons/dumbbell.png" type="image/png" />
     <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="../../css/form-style.css" />
+    
     <title>Create User</title>
   </head> 
 <body>
@@ -118,42 +120,42 @@ if(isset($_POST['update'])){
                                 <div class="col-md-6 m-auto">
                                         <div class="card border border-danger">
                                                 <div class="card-header bg-danger">
-                                                        <h1 id="form-heaader" class="text-white text-center">Update User</h1>
+                                                        <h1 class="form-title text-white text-center">Update User</h1>
                                                 </div>
                                                 <div class="card-body">
                                                         <form action="update_user.php?user_id=<?php echo $user_arr["id"];?>" method="POST" enctype="multipart/form-data">        
                                                                 <div class="row">
                                                                         <div class="col-md-6 mb-2">
-                                                                                <input type="text" class="form-control form-text" name="firstname" id="fname" placeholder="FirstName
+                                                                                <input type="text" class="form-control form-field" name="firstname" id="fname" placeholder="FirstName
                                                                                 "
                                                                                 value="<?php echo $user_arr["fname"];?>"
                                                                                 >
                                                                         </div>
                                                                         <div class="col-md-6 mb-2">
-                                                                                <input type="text" class="form-control form-text" name="lastname" id="lname" placeholder="LastName"
+                                                                                <input type="text" class="form-control form-field" name="lastname" id="lname" placeholder="LastName"
                                                                                 value="<?php echo $user_arr["lname"];?>"
                                                                                 >
                                                                         </div>
                                                                 </div>
                                                                 <div class="row">
                                                                         <div class="col-md-6 mb-2">
-                                                                                <input type="text" class="form-control form-text" name="phone" id="tel" placeholder="PhoneNumber"
+                                                                                <input type="text" class="form-control form-field" name="phone" id="tel" placeholder="PhoneNumber"
                                                                                 value="<?php echo $user_arr["phone"];?>"
                                                                                 >
                                                                         </div>
                                                                         <div class="col-md-6 mb-2">
-                                                                                <input type="email" class="form-control form-text" name="email" id="mail" placeholder="Email"
+                                                                                <input type="email" class="form-control form-field" name="email" id="mail" placeholder="Email"
                                                                                 value="<?php echo $user_arr["email"];?>">
                                                                         </div>
                                                                 </div>
                                                                 <div class="row">
                                                                         <div class="col-md-6 mb-2">
-                                                                                <input type="password" class="form-control form-text" name="password" id="pass" placeholder="Password"
+                                                                                <input type="password" class="form-control form-field" name="password" id="pass" placeholder="Password"
                                                                                 value="<?php echo $user_arr["pass"];?>"
                                                                                 >
                                                                         </div>
                                                                         <div class="col-md-6 mb-2">
-                                                                                <select name="role" class="form-select form-text" aria-label="Default select example">
+                                                                                <select name="role" class="form-select form-field" aria-label="Default select example">
                                                                                         <option  selected><?php echo $user_arr["role"];?></option>
                                                                                         <option value="Admin">Admin</option>
                                                                                         <option value="Customer">Customer</option>
@@ -164,7 +166,7 @@ if(isset($_POST['update'])){
                                                                 </div>
                                                                 <div class="row">
                                                                 <div class="col-md-12 mb-2">
-                                                                                <select name="gender" class="form-select form-text" aria-label="Default select example">
+                                                                                <select name="gender" class="form-select form-field" aria-label="Default select example">
                                                                                         <option  selected><?php echo $user_arr["gender"];?></option>
                                                                                         <option value="Male">Male</option>
                                                                                         <option value="Female">Female</option>
@@ -174,12 +176,12 @@ if(isset($_POST['update'])){
                                                                 <small><?php echo $user_arr["pic_name"];?></small>
                                                                 <div class="row">
                                                                         <div class="col-md-12 mb-2">
-                                                                        <input name="fileToUpload" class="form-control form-text" type="file" id="formFile">
+                                                                        <input name="fileToUpload" class="form-control form-field" type="file" id="formFile">
                                                                         </div>
                                                                 </div>
                                                                 <div class="row">
                                                                         <div class="col-md-12 mb-2">
-                                                                                <button id="form-button" class="form-control bg-danger text-white" type="submit" name="update">Update User</button>
+                                                                                <button class="form-button form-control bg-danger text-white" type="submit" name="update">Update User</button>
                                                                         </div>
                                                                 </div>
                                                         </form>        

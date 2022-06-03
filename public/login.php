@@ -51,6 +51,7 @@ if(isset($_POST['login'])){
     <!--Custom CSS link-->
     <link rel="icon" href="icons/dumbbell.png" type="image/png" />
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/form-style.css">
     <title>Login </title>
      
   </head>
@@ -118,24 +119,24 @@ if(isset($_POST['login'])){
                             <div class="col-md-6 m-auto">
                                 <div class="card border border-danger">
                                         <div class="card-header bg-danger">
-                                                <h1 id="form-header" class="text-center text-white">Login</h1>
+                                                <h1  class="text-center form-title text-white">Login</h1>
                                         </div>
                                         <div class="card-body">
                                                 <form action="login.php" method="POST">
                                                 <div class="row mb-2">
                                                         <div class="col-md-12">
-                                                                <input type="email" class="form-control form-text" name="email" id="email" placeholder="Email">
+                                                                <input type="email" class="form-control form-field" name="email" id="email" placeholder="Email">
                                                         </div>
                                                 </div>
                                                 <div class="row mb-2">
                                                         <div class="col-md-12">
-                                                                <input type="password"class="form-control form-text" name="password" id="password"
+                                                                <input type="password"class="form-control form-field" name="password" id="password"
                                                                 placeholder="Password">
                                                         </div>
                                                 </div>
                                                 <div class="row mb-2">
                                                         <div class="col-md-12">
-                                                                <button id="form-button" class="form-control bg-danger text-white" type="submit" name="login">Login</button>
+                                                                <button class="form-control form-button bg-danger text-white" type="submit" name="login">Login</button>
                                                         </div>
                                                 </div>
                                                 </form>

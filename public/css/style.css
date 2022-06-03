@@ -15,7 +15,7 @@ body {
 .navbar-brand {
   font-family: "Brush Script MT", cursive;
   font-weight: bold;
-  font-size: 40px;
+  font-size: 32pt;
 }
 .nav-item a {
   font-family: "Times New Roman", sans-serif;
@@ -182,25 +182,6 @@ i {
   opacity: 2.5;
   color: white;
 }
-#table-heading,
-#form-header {
-  font-family: "Times New Roman", Times, sans-serif;
-  font-weight: bold;
-  font-style: oblique;
-  font-size: 25px;
-}
-#form-button {
-  font-family: "Times New Roman", Times, serif;
-  font-style: italic;
-  font-size: 15px;
-}
-.form-text {
-  font-family: "Times New Roman", Times, serif;
-  font-style: normal;
-  font-size: 15px;
-}
-
-/* Styling about us */
 #about-header {
   font-family: "Impact", "Haettenschweiler", sans-serif;
   font-weight: bold;

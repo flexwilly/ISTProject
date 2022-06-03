@@ -54,6 +54,8 @@ if(isset($_POST['update'])){
     <!--Custom CSS link-->
     <link rel="icon" href="../../icons/dumbbell.png" type="image/png" />
     <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="../../css/form-style.css" />
+
     <title>Update Service</title>
   </head> 
 <body>
@@ -107,19 +109,19 @@ if(isset($_POST['update'])){
                                 <div class="col-md-6 m-auto">
                                         <div class="card border border-danger">
                                                 <div class="card-header bg-danger text-white">
-                                                        <h1 id="form-header" class="text-center">Update Service</h1>
+                                                        <h1 class="form-title text-center">Update Service</h1>
                                                 </div>
                                                 <div class="card-body">
                                                         <form action="update_service.php?service_id=<?php echo $service_array['service_id'];?>" method="POST" enctype="multipart/form-data">        
                                                                 <div class="row">
                                                                         <div class="col-md-6 mb-2">
-                                                                                <input type="text" class="form-control form-text" name="name" id="service-name" placeholder="Service Name
+                                                                                <input type="text" class="form-control form-field" name="name" id="service-name" placeholder="Service Name
                                                                                 "
                                                                                 value="<?php echo $service_array["service_name"];?>"
                                                                                 >
                                                                         </div>
                                                                         <div class="col-md-6 mb-2">
-                                                                                <input type="text" class="form-control form-text" name="price" id="service-price" placeholder="Service Name
+                                                                                <input type="text" class="form-control form-field" name="price" id="service-price" placeholder="Service Name
                                                                                 "
                                                                                 value="<?php echo $service_array["service_price"];?>"
                                                                                 >
@@ -129,12 +131,12 @@ if(isset($_POST['update'])){
                                                                 <small><?php echo $service_array["pic_name"];?></small>
                                                                 <div class="row">
                                                                         <div class="col-md-12 mb-2">
-                                                                        <input name="fileToUpload" class="form-control form-text" type="file" id="formFile">
+                                                                        <input name="fileToUpload" class="form-control form-field" type="file" id="formFile">
                                                                         </div>
                                                                 </div>
                                                                 <div class="row">
                                                                         <div class="col-md-12 mb-2">
-                                                                                <button id="form-button" class="form-control bg-danger text-white" type="submit" name="update">Update Service</button>
+                                                                                <button  class="form-button form-control bg-danger text-white" type="submit" name="update">Update Service</button>
                                                                         </div>
                                                                 </div>
                                                         </form>        

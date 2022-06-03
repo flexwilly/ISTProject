@@ -49,6 +49,8 @@ if(isset($_POST['daily-submission'])){
     <!--Custom CSS link-->
     <link rel="icon" href="../icons/dumbbell.png" type="image/png" />
     <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/form-style.css" />
+    
     <title>View Services</title>
     <!--Internal CSS-->
     <style>
@@ -102,55 +104,55 @@ if(isset($_POST['daily-submission'])){
     <!--Form Sections-->
     <section class="forms-sections mt-4 mb-4">
             <div class="container">
-              <h1 class="text-center">Please Select A subscription </h1>
+              <h1 class="form-title text-center">Please Select A subscription </h1>
                     <div class="row">
                             <div class="col-md-4 mb-3">
-                                <div class="card">
-                                        <div class="card-header">
-                                                <h2 class="text-center">Daily </h2>
+                                <div class="card border border-danger">
+                                        <div class="card-header bg-danger">
+                                                <h1 class="form-title text-center text-white">Daily </h1>
                                         </div>
                                         <div class="card-body">
                                                 <form action="subscribe.php" method="post">
-                                                        <label for="start-date">Start Date</label>
-                                                        <input type="date" class="form-control" name="start-date" id="" min="<?php echo date("Y-m-d");?>">
+                                                        <label class="form-field" for="start-date">Start Date</label>
+                                                        <input type="date" class="form-control form-field" name="start-date" id="" min="<?php echo date("Y-m-d");?>">
                                                         <br>
-                                                        <input type="number" class="form-control" min="1" max="6" name="daily" id="" placeholder="Number of Days" >
+                                                        <input type="number" class="form-control form-field" min="1" max="6" name="daily" id="" placeholder="Number of Days" >
                                                         <br>
-                                                        <button name="daily-submission" class="form-control text-white btn btn-danger" type="submit"  >Subscribe</button>
+                                                        <button name="daily-submission" class="form-control form-button text-white btn btn-danger" type="submit"  >Subscribe</button>
                                                 </form>
                                         </div>
                                 </div>
                             </div>
                             <div class="col-md-4 mb-3">
-                                <div class="card">
-                                        <div class="card-header">
-                                                <h2 class="text-center">Monthly </h2>
+                                <div class="card border border-danger">
+                                        <div class="card-header bg-danger">
+                                                <h1 class="form-title text-center text-white">Monthly </h1>
                                         </div>
                                         <div class="card-body">
                                                 <form action="subscribe.php" method="post">
-                                                       <label for="start-date">Start Date</label>
-                                                        <input type="date" class="form-control" name="start-month-date" id="" min="<?php echo date("Y-m-d");?>">
+                                                       <label class="form-field" for="start-date">Start Date</label>
+                                                        <input type="date" class="form-field form-control" name="start-month-date" id="" min="<?php echo date("Y-m-d");?>">
                                                         <br>
-                                                        <input type="number" class="form-control" min="1" max="12" name="monthly" id=""  placeholder="Number of Months">
+                                                        <input type="number" class="form-field form-control" min="1" max="12" name="monthly" id=""  placeholder="Number of Months">
                                                         <br>
-                                                        <button name="monthly-submission" class="form-control text-white btn btn-danger" type="submit">Subscribe</button>
+                                                        <button name="monthly-submission" class="form-control form-button text-white btn btn-danger" type="submit">Subscribe</button>
                                                 </form>
                                         </div>
                                 </div>
                             </div>
                             <div class="col-md-4 mb-3">
-                                <div class="card">
-                                        <div class="card-header">
-                                                <h2 class="text-center">Weekly </h2>
+                                <div class="card border border-danger">
+                                        <div class="card-header bg-danger">
+                                                <h1 class="form-title text-center text-white">Weekly </h1>
                                         </div>
                                         <div class="card-body">
                                                 <form action="subscribe.php" method="post">
-                                                        <label for="start-date">Start Date</label>
-                                                        <input type="date" class="form-control" name="start-week-date" id="" min="<?php echo date("Y-m-d");?>">
+                                                        <label class="form-field" for="start-date">Start Date</label>
+                                                        <input type="date" class="form-control form-field" name="start-week-date" id="" min="<?php echo date("Y-m-d");?>">
                                                         <br>
-                                                        <input type="number" class="form-control" min="1" max="3" name="weekly" id="" placeholder="Number of Weeks">
+                                                        <input type="number" class="form-control form-field" min="1" max="3" name="weekly" id="" placeholder="Number of Weeks">
                                                         <br>
-                                                        <button name="weekly-submission" class="form-control text-white btn btn-danger" type="submit">Subscribe</button>
+                                                        <button name="weekly-submission" class="form-control form-button text-white btn btn-danger" type="submit">Subscribe</button>
                                                 </form>
                                         </div>
                                 </div>

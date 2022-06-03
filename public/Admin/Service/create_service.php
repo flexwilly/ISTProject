@@ -53,6 +53,8 @@ if(isset($_POST['create-service'])){
     <!--Custom CSS link-->
     <link rel="icon" href="../../icons/dumbbell.png" type="image/png" />
     <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="../../css/form-style.css" />
+    
     <title>Create Service</title>
   </head> 
 <body>
@@ -108,26 +110,26 @@ if(isset($_POST['create-service'])){
                                 <div class="col-md-6 m-auto">
                                         <div class="card border border-danger">
                                                 <div class="card-header bg-danger">
-                                                        <h1 id="form-header" class=" text-center text-white">Create Service</h1>
+                                                        <h1  class="form-title text-center text-white">Create Service</h1>
                                                 </div>
                                                 <div class="card-body">
                                                         <form action="create_service.php" method="POST" enctype="multipart/form-data">        
                                                                 <div class="row">
                                                                         <div class="col-md-6 mb-2">
-                                                                                <input type="text" class="form-control form-text" name="name" id="service-name" placeholder="Service Name">
+                                                                                <input type="text" class="form-control form-field" name="name" id="service-name" placeholder="Service Name">
                                                                         </div>
                                                                         <div class="col-md-6 mb-2">
-                                                                                <input type="number" class="form-control form-text" name="price" id="service-price" placeholder="Service Price">
+                                                                                <input type="number" class="form-control form-field" name="price" id="service-price" placeholder="Service Price">
                                                                         </div>
                                                                 </div>
                                                                 <div class="row">
                                                                         <div class="col-md-12 mb-2">
-                                                                        <input name="fileToUpload" class="form-control form-text" type="file" id="formFile">
+                                                                        <input name="fileToUpload" class="form-control form-field" type="file" id="formFile">
                                                                         </div>
                                                                 </div>
                                                                 <div class="row">
                                                                         <div class="col-md-12 mb-2">
-                                                                                <button id="form-button" class="form-control bg-danger text-white" type="submit" name="create-service">Create Service</button>
+                                                                                <button class="form-button form-control bg-danger text-white" type="submit" name="create-service">Create Service</button>
                                                                 </div>
                                                                 
                                                         </form>        

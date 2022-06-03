@@ -65,6 +65,8 @@ if(isset($_POST['create-user'])){
     <!--Custom CSS link-->
     <link rel="icon" href="../../icons/dumbbell.png" type="image/png" />
     <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="../../css/form-style.css" />
+
     <title>Create User</title>
   </head> 
 <body>
@@ -119,42 +121,42 @@ if(isset($_POST['create-user'])){
                                 <div class="col-md-6 m-auto">
                                         <div class="card border border-danger">
                                                 <div class="card-header bg-danger">
-                                                        <h1 id="form-heaader" class="text-white text-center">Create User</h1>
+                                                        <h1  class="form-title text-white text-center">Create User</h1>
                                                 </div>
                                                 <div class="card-body">
                                                         <form action="create_user.php" method="POST" enctype="multipart/form-data">        
                                                                 <div class="row">
                                                                         <div class="col-md-6 mb-2">
-                                                                                <input type="text" class="form-control form-text" name="firstname" id="fname" placeholder="FirstName
+                                                                                <input type="text" class="form-control form-field" name="firstname" id="fname" placeholder="FirstName
                                                                                 "
                                                                                
                                                                                 >
                                                                         </div>
                                                                         <div class="col-md-6 mb-2">
-                                                                                <input type="text" class="form-control form-text" name="lastname" id="lname" placeholder="LastName"
+                                                                                <input type="text" class="form-control form-field" name="lastname" id="lname" placeholder="LastName"
                                                                                 
                                                                                 >
                                                                         </div>
                                                                 </div>
                                                                 <div class="row">
                                                                         <div class="col-md-6 mb-2">
-                                                                                <input type="text" class="form-control form-text" name="phone" id="tel" placeholder="PhoneNumber"
+                                                                                <input type="text" class="form-control form-field" name="phone" id="tel" placeholder="PhoneNumber"
                                                                                
                                                                                 >
                                                                         </div>
                                                                         <div class="col-md-6 mb-2">
-                                                                                <input type="email" class="form-control form-text" name="email" id="mail" placeholder="Email"
+                                                                                <input type="email" class="form-control form-field" name="email" id="mail" placeholder="Email"
                                                                                 >
                                                                         </div>
                                                                 </div>
                                                                 <div class="row">
                                                                         <div class="col-md-6 mb-2">
-                                                                                <input type="password" class="form-control form-text" name="password" id="pass" placeholder="Password"
+                                                                                <input type="password" class="form-control form-field" name="password" id="pass" placeholder="Password"
                                                                                 
                                                                                 >
                                                                         </div>
                                                                         <div class="col-md-6 mb-2">
-                                                                                <select name="role" class="form-select form-text" aria-label="Default select example">
+                                                                                <select name="role" class="form-select form-field" aria-label="Default select example">
                                                                                         
                                                                                         <option value="Admin">Admin</option>
                                                                                         <option value="Customer">Customer</option>
@@ -165,7 +167,7 @@ if(isset($_POST['create-user'])){
                                                                 </div>
                                                                 <div class="row">
                                                                 <div class="col-md-12 mb-2">
-                                                                                <select name="gender" class="form-select form-text" aria-label="Default select example">
+                                                                                <select name="gender" class="form-select form-field" aria-label="Default select example">
                                                                                         
                                                                                         <option value="Male">Male</option>
                                                                                         <option value="Female">Female</option>
@@ -175,12 +177,12 @@ if(isset($_POST['create-user'])){
                                                                 
                                                                 <div class="row">
                                                                         <div class="col-md-12 mb-2">
-                                                                        <input name="fileToUpload" class="form-control form-text" type="file" id="formFile">
+                                                                        <input name="fileToUpload" class="form-control form-field" type="file" id="formFile">
                                                                         </div>
                                                                 </div>
                                                                 <div class="row">
                                                                         <div class="col-md-12 mb-2">
-                                                                                <button id="form-button" class="form-control bg-danger text-white" type="submit" name="create-user">Create User</button>
+                                                                                <button  class="form-control form-button bg-danger text-white" type="submit" name="create-user">Create User</button>
                                                                         </div>
                                                                 </div>
                                                         </form>        

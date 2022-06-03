@@ -34,6 +34,7 @@ if(isset($_POST['submit'])){
     <!--Custom CSS link-->
     <link rel="icon" href="icons/dumbbell.png" type="image/png" />
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/form-style.css">
     <title>Contact Us</title>
      
   </head>
@@ -110,7 +111,7 @@ if(isset($_POST['submit'])){
         <div class="row">
           <div class="col-md-8 m-auto">
             <div class="card border border-danger ">
-              <h3 id="form-header" class="bg-danger text-white text-center p-3">Please fill out this form to contact us</h3>
+              <h1 class="bg-danger form-title text-white text-center p-3">Please fill out this form to contact us</h1>
               <div class="card-body">
                 <form action="contact_us.php" method="post">
                   <div class="row">
@@ -120,7 +121,7 @@ if(isset($_POST['submit'])){
                           type="text"
                           name="firstname"
                           id="fname"
-                          class="form-control form-text"
+                          class="form-control form-field"
                           placeholder="First Name"
                         />
                       </div>
@@ -131,7 +132,7 @@ if(isset($_POST['submit'])){
                           type="text"
                           name="lastname"
                           id="lname"
-                          class="form-control form-text"
+                          class="form-control form-field"
                           placeholder="Last Name"
                         />
                       </div>
@@ -144,7 +145,7 @@ if(isset($_POST['submit'])){
                           type="email"
                           name="email"
                           id="idemail"
-                          class="form-control form-text"
+                          class="form-control form-field"
                           placeholder="Email"
                         />
                       </div>
@@ -155,7 +156,7 @@ if(isset($_POST['submit'])){
                           type="text"
                           name="phone"
                           id="idphone"
-                          class="form-control form-text"
+                          class="form-control form-field"
                           placeholder="Phone Number"
                         />
                       </div>
@@ -164,14 +165,14 @@ if(isset($_POST['submit'])){
                   <div class="row">
                     <div class="col-md-12 mb-3">
                       <div class="form-group">
-                        <textarea  class="form-control form-text"  id="idmessage" placeholder="Message" name="message"></textarea>
+                        <textarea  class="form-control form-field"  id="idmessage" placeholder="Message" name="message"></textarea>
                       </div> 
                     </div> 
                   </div>
                   <div class="row">
                     <div class="col-md-12 mb-3">
                       <div class="form-group">                                
-                        <input  id="form-button" name="submit" type="submit" value="Submit" class="form-control btn btn-outline-danger btn-block">
+                        <input name="submit" type="submit" value="Submit" class="form-control text-white form-button btn btn-danger btn-block">
                     </div>
                     </div>
                   </div>
