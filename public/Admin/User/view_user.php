@@ -218,7 +218,6 @@ $user_array = $users->getAllUsers();
       //JQuery for setting the current year
       $("#year").text(new Date().getFullYear());
       $('#show-user').DataTable();
-      
     </script>
     
    <script src="../../js/scroll_up.js"> </script>

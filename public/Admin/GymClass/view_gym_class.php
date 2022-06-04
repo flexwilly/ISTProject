@@ -22,6 +22,8 @@ $gym_class = new GymClass();
      integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
      crossorigin="anonymous"
    />
+   <!--cdn datatables-->
+   <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css"/>
     <!--Custom CSS link-->
     <link rel="icon" href="../../icons/dumbbell.png" type="image/png" />
     <link rel="stylesheet" href="../../css/style.css" />
@@ -77,14 +79,15 @@ $gym_class = new GymClass();
                 <div class="row">
                           <h1 id="form-header" class="text-center">View All Classes</h1>
                         <div class="col-md-8 m-auto">
-                                <table id="service-table" class="table table-striped border border-dark">
+                                <table id="gym-class-table" class="table table-striped border border-dark">
                                         <thead class="text-white bg-danger text-center">
 
                                                 <tr>
                                                         <th id="table-heading" scope="col">Class Name</th>
                                                         <th id="table-heading" scope="col">Class Description</th>
                                                         <th id="table-heading" scope="col">Class Image</th>
-                                                        <th id="table-heading" scope ="col" colspan=2>#</th>
+                                                        <th id="table-heading" scope="col">Update</th>
+                                                        <th id="table-heading" scope="col">Delete</th>
                                                 </tr>    
                                         </thead>
                                         <tbody class="text-center">
@@ -193,9 +196,13 @@ $gym_class = new GymClass();
     integrity="sha512-WNZwVebQjhSxEzwbettGuQgWxbpYdoLf7mH+25A7sfQbbxKeS5SQ9QBf97zOY4nOlwtksgDA/czSTmfj4DUEiQ=="
     crossorigin="anonymous"
   ></script>
+  <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+  <!--End Data Tables-->
     <script>
       //JQuery for setting the current year
       $("#year").text(new Date().getFullYear());
+      $('#gym-class-table').DataTable();
     </script>
    <script src="../../js/scroll_up.js"> </script>
   </body>
