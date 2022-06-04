@@ -38,6 +38,7 @@ $s1 = $services->getAllServices();
     <!--Custom CSS link-->
     <link rel="icon" href="../icons/dumbbell.png" type="image/png" />
     <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/form-style.css" />
     <title>View Services</title>
     <!--Internal CSS-->
     <style>
@@ -93,13 +94,13 @@ $s1 = $services->getAllServices();
     <!---View Services Section-->
     <section class="view-services-section mt-4 mb-4">
         <div class="container">
-            <h1 class="text-center">Our Services</h1>
+            <h1 class="text-center form-title">Our Services</h1>
             <div class="row mb-2">   
                     <?php foreach($s1 as $service){?>
                     <div class="col-md-4">
-                        <div class="card">
-                                <div class="card-header">
-                                        <h1 class="text-center"><?php echo $service['service_name'];?></h1>
+                        <div class="card border border-danger">
+                                <div class="card-header bg-danger">
+                                        <h1 class="form-title text-center text-white"><?php echo $service['service_name'];?></h1>
                                 </div>
                                 <img src="../images/<?php echo $service['pic_name'];?>" class="card-img-top" alt="Profile" height="200">
                                 <div class="card-body">
@@ -108,7 +109,7 @@ $s1 = $services->getAllServices();
                                         </ul>
                                          <ul class="list-group">
                                                <li class="text-center list-group-item">
-                                               <a id='form-button' class='btn btn-success' href='subscription.php?service_id=<?php echo $service['service_id']?>'>Subscribe</a>
+                                               <a  class='form-button form-control btn btn-danger' href='subscription.php?service_id=<?php echo $service['service_id']?>'>Subscribe</a>
                                                </li>
                                          </ul>
                                 </div>
