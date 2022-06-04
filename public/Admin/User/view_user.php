@@ -1,6 +1,7 @@
 <?php
 include('../../../includes/initialize.php');
 $users= new User();
+$user_array = $users->getAllUsers();
 
 ?>
 <!DOCTYPE html>
@@ -22,10 +23,20 @@ $users= new User();
      integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
      crossorigin="anonymous"
    />
+    <!--cdn datatables-->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css"/>
     <!--Custom CSS link-->
     <link rel="icon" href="../../icons/dumbbell.png" type="image/png" />
     <link rel="stylesheet" href="../../css/style.css" />
     <title>View User</title>
+    <style>
+      .table-section{
+        height: 400px;
+        width: 100%;
+        overflow: auto;
+      }
+   
+    </style>
   </head>
 <body>
    <!--NavBar-->
@@ -71,55 +82,56 @@ $users= new User();
                 </div>
         </div>
     </nav>
-                <section class="table-section mt-4 mb-4">
-                        <div class="container">
-                                <div class="row">
-                                <h1 id="form-header" class="text-center">View All Users</h1>
-                                        <div class="col-md-9">                        
-                                                <table class="table table-striped border border-dark">
-                                                        <thead>
-                                                        <tr>
-                                                        <th id="table-heading" class="text-center" scope="col">ID</th>
-                                                        <th id="table-heading" class="text-center" scope="col">FirstName</th>
-                                                        <th id="table-heading" class="text-center" scope="col">LastName</th>
-                                                        <th id="table-heading" class="text-center" scope="col">Phone</th>
-                                                        <th id="table-heading" class="text-center" scope="col">Email</th>
-                                                        <th id="table-heading" class="text-center" scope="col">Gender</th>
-                                                        <th id="table-heading" class="text-center" scope="col">Role</th>
-                                                        <th id="table-heading" class="text-center" scope="col">Filename</th>
-                                                        <th id="table-heading" class="text-center" scope="col">Date Created</th>
-                                                        <th id="table-heading" class="text-center" scope ="col" colspan=2>#</th>
-                                                        </tr>    
-                                                        </thead>
-                                                        <tbody>
-                                                        <?php
-                                                        $u1 = $users->getAllUsers();
-                                                        
-                                                        foreach($u1 as $user){
-                                                        echo "<tr class ='col'>
-                                                        <td>$user[id]</td>
-                                                        <td>$user[fname]</td>
-                                                        <td>$user[lname]</td>
-                                                        <td>$user[phone]</td>
-                                                        <td>$user[email]</td>
-                                                        <td>$user[gender]</td>
-                                                        <td>$user[role]</td>
-                                                        <td><img class='rounded-circle' src='../../images/$user[pic_name]'width = '100' height='100'></td>
-                                                        <td>$user[date_created]</td>
-                                                        <td><a class='btn btn-danger 'href='delete_user.php?user_id=$user[id]'>Delete</a></td>
-                                                        <td><a class='btn btn-success' href='update_user.php?user_id=$user[id]'>Update</a></td>
-                                                        </tr>"
-                                                        ;     
-                                                        }
-                                                        ?>     
-                                                        </tbody>
-                                                </table>
-                                        </div>
-                                </div>
-                                
+        <!--Section to Display Users-->
+        <section class="table-section mt-4 mb-4">
+        <div class="container">
+                <div class="row">
+                          <h1 id="form-header" class="text-center">View My Trainees</h1>
+                        <div class="col-md-11 m-auto">
+                                <table id="show-user" class="table table-striped border border-dark">
+                                        <thead class="text-white bg-danger text-center">
+
+                                                <tr>
+                                                        <th id="table-heading" scope="col">ID</th>
+                                                        <th id="table-heading" scope="col">FName</th>
+                                                        <th id="table-heading" scope="col">LName</th>
+                                                        <th id="table-heading" scope="col">Phone</th>
+                                                        <th id="table-heading" scope="col">Email</th>
+                                                        <th id="table-heading" scope="col">Role</th>
+                                                        <th id="table-heading" scope="col">Date Created</th>
+                                                        <th id="table-heading" scope="col">FileName</th>
+                                                        <th id="table-heading" scope="col">Update</th>
+                                                        <th id="table-heading" scope="col">Delete</th>
+
+                                                </tr>    
+                                        </thead>
+                                        <tbody class="text-center">
+                                                <?php                                   
+                                                foreach($user_array as $user){
+                                                echo "<tr class ='col'>
+                                                <td class='form-text'>$user[id]</td>
+                                                <td class='form-text' >$user[fname]</td>
+                                                <td class='form-text' >$user[lname]</td>
+                                                <td class='form-text' >$user[phone]</td>
+                                                <td class='form-text' >$user[email]</td>  
+                                                <td class='form-text' >$user[role]</td> 
+                                                <td>$user[date_created]</td>
+                                                <td><img class='rounded-circle' src='../../images/$user[pic_name]'width = '100' height='100'></td>
+                                                <td><a class='btn btn-danger' href='delete_user.php?user_id=$user[id]'>Delete</a></td>
+                                                <td><a class='btn btn-success' href='update_user.php?user_id=$user[id]'>Update</a></td>
+                                                </tr>"
+                                                ;     
+                                                }
+                                                ?>     
+                                        </tbody>
+                                </table>
                         </div>
-                </section>        
-               
+
+                </div>
+       
+        </div>
+    </section> 
+        <!--End Section-->       
                 <a href="#" class="scrollup  text-dark"><i class="fas fa-arrow-up"></i></a>
     <!--Footer-->
     <footer id="main-footer" class="bg-danger text-white">
@@ -178,11 +190,7 @@ $users= new User();
       </div>
     </footer>
     <!--Bootstrap CDN JS & JQUERY links-->
-    <script
-    src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-    integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs="
-    crossorigin="anonymous"
-  ></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script
     src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"
     integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU"
@@ -202,10 +210,18 @@ $users= new User();
     integrity="sha512-WNZwVebQjhSxEzwbettGuQgWxbpYdoLf7mH+25A7sfQbbxKeS5SQ9QBf97zOY4nOlwtksgDA/czSTmfj4DUEiQ=="
     crossorigin="anonymous"
   ></script>
+  <!--Data Tables JS-->
+  <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+  <!--End Data Tables-->
     <script>
       //JQuery for setting the current year
       $("#year").text(new Date().getFullYear());
+      $('#show-user').DataTable();
+      
     </script>
+    
    <script src="../../js/scroll_up.js"> </script>
+   
   </body>
 </html>

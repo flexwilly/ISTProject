@@ -179,7 +179,7 @@ class GymClass {
 
 
      //Function to geta a gym class by ID
-     public function getClassById($custom_id){
+     public function getGymClassById($custom_id){
       try{      
         $stmt = $this->dbConn->prepare('SELECT * FROM '.$this->tableName. ' WHERE id = :id');
         $stmt->execute(['id'=> $custom_id]);
@@ -281,7 +281,7 @@ class GymClass {
               //4. Update existing image only
                 public function update_img($id){
                       //get user by id
-                      $service = $this->getClassById($id);  
+                      $service = $this->getGymClassById($id);  
 
                       // Can't save if there are pre-existing errors
                       if(!empty($this->errors)) { return false; }
@@ -323,7 +323,7 @@ class GymClass {
                       public function destroy_img($id){
                         #Target path
                         $target_path = SITE_ROOT.DS.'public'.DS.$this->image_path();
-                        $gym=$this->getClassById($id);
+                        $gym=$this->getGymClassById($id);
                         //remove image first from targe path
                         if(unlink($target_path.$gym['pic_name'])){     
                         $this->delete_gym_class($gym['id']);

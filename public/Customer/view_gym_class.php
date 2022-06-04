@@ -1,31 +1,17 @@
 <?php
 include("../../includes/initialize.php");
 $sess = new Session();
+$gc = new GymClass();
+// echo "This is my id:" .$sess->getId();
+// echo"<br/>";
+// echo "This is my name: ".$sess->getFName();
+// echo "<br/>";
+// echo "This is my role: ".$sess->getRole();
+$role = $sess->getRole();
+//$sess->check_user_login($role,"Customer");
+$gym_classes = $gc->view_all_classes();
 
-//monthly subscription
-if(isset($_POST['monthly-submission'])){
-
-  $selected_date = date('Y-m-d H:i:s',strtotime($_POST['start-month-date']));
-  $end_date =  date('Y-m-d H:i:s',strtotime($selected_date. "+ {$_POST['monthly']} month"));
- echo $end_date;
-
-
-}
-
-if(isset($_POST['weekly-submission'])){
-  $selected_date = date('Y-m-d H:i:s',strtotime($_POST['start-week-date']));
-  $end_date =  date('Y-m-d H:i:s',strtotime($selected_date. "+ {$_POST['weekly']} week"));
-  echo $end_date;
-  
-}
-
-if(isset($_POST['daily-submission'])){
-  $selected_date = date('Y-m-d H:i:s',strtotime($_POST['start-date']));
-  $end_date =  date('Y-m-d H:i:s',strtotime($selected_date. "+ {$_POST['daily']} days"));
-  echo $end_date;
-  
-}
-
+//print_r($service_array);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -50,7 +36,6 @@ if(isset($_POST['daily-submission'])){
     <link rel="icon" href="../icons/dumbbell.png" type="image/png" />
     <link rel="stylesheet" href="../css/style.css" />
     <link rel="stylesheet" href="../css/form-style.css" />
-    
     <title>View Services</title>
     <!--Internal CSS-->
     <style>
@@ -101,69 +86,39 @@ if(isset($_POST['daily-submission'])){
                 </div>
         </div>
     </nav>
-    <!--Form Sections-->
-    <section class="forms-sections mt-4 mb-4">
-            <div class="container">
-              <h1 class="form-title text-center">Please Select A subscription </h1>
-                    <div class="row">
-                            <div class="col-md-4 mb-3">
-                                <div class="card border border-danger">
-                                        <div class="card-header bg-danger">
-                                                <h1 class="form-title text-center text-white">Daily </h1>
-                                        </div>
-                                        <div class="card-body">
-                                                <form action="subscribe.php" method="post">
-                                                        <label class="form-field" for="start-date">Start Date</label>
-                                                        <input type="date" class="form-control form-field" name="start-date" id="" min="<?php echo date("Y-m-d");?>">
-                                                        <br>
-                                                        <input type="number" class="form-control form-field" min="1" max="6" name="daily" id="" placeholder="Number of Days" >
-                                                        <br>
-                                                        <button name="daily-submission" class="form-control form-button text-white btn btn-danger" type="submit"  >Subscribe</button>
-                                                </form>
-                                        </div>
+
+
+    <!---View Services Section-->
+    <section class="view-services-section mt-4 mb-4">
+        <div class="container">
+            <h1 class="text-center form-title">Join Todays Class</h1>
+            <div class="row mb-2">   
+                    <?php foreach($gym_classes as $gym_class){?>
+                    <div class="col-md-4 mb-4">
+                        <div class="card">
+                                <div class="card-header bg-danger">
+                                        <h1 class="form-title text-center text-white"><?php echo $gym_class['gym_class_name'];?></h1>
                                 </div>
-                            </div>
-                            <div class="col-md-4 mb-3">
-                                <div class="card border border-danger">
-                                        <div class="card-header bg-danger">
-                                                <h1 class="form-title text-center text-white">Monthly </h1>
-                                        </div>
-                                        <div class="card-body">
-                                                <form action="subscribe.php" method="post">
-                                                       <label class="form-field" for="start-date">Start Date</label>
-                                                        <input type="date" class="form-field form-control" name="start-month-date" id="" min="<?php echo date("Y-m-d");?>">
-                                                        <br>
-                                                        <input type="number" class="form-field form-control" min="1" max="12" name="monthly" id=""  placeholder="Number of Months">
-                                                        <br>
-                                                        <button name="monthly-submission" class="form-control form-button text-white btn btn-danger" type="submit">Subscribe</button>
-                                                </form>
-                                        </div>
+                                <img src="../images/<?php echo $gym_class['pic_name'];?>" class="card-img-top" alt="Profile" height="200">
+                                <div class="card-body">
+                                        <ul class="list-group list-group-flush">
+                                                <li class="text-center list-group-item"> <?php echo $gym_class["gym_class_desc"];?></li>
+                                        </ul>
+                                         <ul class="list-group">
+                                               <li class="text-center list-group-item">
+                                               <a class='form-control form-button btn btn-danger' href='enroll.php?id=<?php echo $gym_class['id']?>'>Enroll Now</a>
+                                               </li>
+                                         </ul>
                                 </div>
-                            </div>
-                            <div class="col-md-4 mb-3">
-                                <div class="card border border-danger">
-                                        <div class="card-header bg-danger">
-                                                <h1 class="form-title text-center text-white">Weekly </h1>
-                                        </div>
-                                        <div class="card-body">
-                                                <form action="subscribe.php" method="post">
-                                                        <label class="form-field" for="start-date">Start Date</label>
-                                                        <input type="date" class="form-control form-field" name="start-week-date" id="" min="<?php echo date("Y-m-d");?>">
-                                                        <br>
-                                                        <input type="number" class="form-control form-field" min="1" max="3" name="weekly" id="" placeholder="Number of Weeks">
-                                                        <br>
-                                                        <button name="weekly-submission" class="form-control form-button text-white btn btn-danger" type="submit">Subscribe</button>
-                                                </form>
-                                        </div>
-                                </div>
-                            </div>
+                        </div>
                     </div>
+                    <?php }?>
             </div>
+        </div>
     </section>
+      <!--End View Services  Section-->
 
-    <!--End Form Sections-->
-
-    <a href="#" class="scrollup  text-dark"><i class="fas fa-arrow-up"></i></a>
+      <a href="#" class="scrollup  text-dark"><i class="fas fa-arrow-up"></i></a>
     <!--Footer-->
     <footer id="main-footer" class="bg-danger text-white">
       <div class="container">

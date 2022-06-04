@@ -32,6 +32,9 @@ $s1 = $services->getAllServices();
      integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
      crossorigin="anonymous"
    />
+   <!--datatables-->
+   <!--cdn datatables-->
+   <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css"/>
     <!--Custom CSS link-->
     <link rel="icon" href="../icons/dumbbell.png" type="image/png" />
     <link rel="stylesheet" href="../css/style.css" />
@@ -103,6 +106,11 @@ $s1 = $services->getAllServices();
                                         <ul class="list-group list-group-flush">
                                                 <li class="text-center list-group-item">$ <?php echo $service["service_price"];?></li>
                                         </ul>
+                                         <ul class="list-group">
+                                               <li class="text-center list-group-item">
+                                               <a id='form-button' class='btn btn-success' href='subscription.php?service_id=<?php echo $service['service_id']?>'>Subscribe</a>
+                                               </li>
+                                         </ul>
                                 </div>
                         </div>
                     </div>
@@ -197,9 +205,14 @@ $s1 = $services->getAllServices();
     integrity="sha512-WNZwVebQjhSxEzwbettGuQgWxbpYdoLf7mH+25A7sfQbbxKeS5SQ9QBf97zOY4nOlwtksgDA/czSTmfj4DUEiQ=="
     crossorigin="anonymous"
   ></script>
+  <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+  <!--End Data Tables-->
     <script>
       //JQuery for setting the current year
       $("#year").text(new Date().getFullYear());
+      $('#mytable').DataTable();
+      
     </script>
    <script src="../js/scroll_up.js"> </script>
   </body>

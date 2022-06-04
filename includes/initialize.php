@@ -30,6 +30,7 @@ require_once(LIB_PATH.DS."trainer.php");
 require_once(LIB_PATH.DS."functions.php");
 require_once(LIB_PATH.DS."contact.php");
 require_once(LIB_PATH.DS."gym_class.php");
+require_once(LIB_PATH.DS."enrollment.php");
 
 
 

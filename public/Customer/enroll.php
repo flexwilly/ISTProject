@@ -2,34 +2,40 @@
 include("../../includes/initialize.php");
 $sess = new Session();
 
-//monthly subscription
-if(isset($_POST['monthly-submission'])){
+$gc = new GymClass();
+$enrollment = new Enrollment();
 
-  $selected_date = date('Y-m-d H:i:s',strtotime($_POST['start-month-date']));
-  $end_date =  date('Y-m-d H:i:s',strtotime($selected_date. "+ {$_POST['monthly']} month"));
- echo $end_date;
+$id = $_GET['id'];
+
+// echo "This is my id:" .$sess->getId();
+// echo"<br/>";
+// echo "This is my name: ".$sess->getFName();
+// echo "<br/>";
+// echo "This is my role: ".$sess->getRole();
+$role = $sess->getRole();
+//$sess->check_user_login($role,"Customer");
+$gym_class_array = $gc->getGymClassById($id);
+
+$gc_name = $gym_class_array["gym_class_name"];
+//echo $gc_name;
 
 
-}
+if(isset($_POST['subscription'])){
+      $date = date('Y-m-d H:i:s');  
+      $moment = $_POST['moment'];
+      $enrollment->setGym_class_id($id);
+      $enrollment->setDate($date);
+      $enrollment->setMoment($moment);
+      $enrollment->setUser_id(13);
+      $enrollment->createEnrollment();
 
-if(isset($_POST['weekly-submission'])){
-  $selected_date = date('Y-m-d H:i:s',strtotime($_POST['start-week-date']));
-  $end_date =  date('Y-m-d H:i:s',strtotime($selected_date. "+ {$_POST['weekly']} week"));
-  echo $end_date;
-  
-}
-
-if(isset($_POST['daily-submission'])){
-  $selected_date = date('Y-m-d H:i:s',strtotime($_POST['start-date']));
-  $end_date =  date('Y-m-d H:i:s',strtotime($selected_date. "+ {$_POST['daily']} days"));
-  echo $end_date;
-  
 }
 
 ?>
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!--Bootstrapcss link-->
@@ -51,12 +57,13 @@ if(isset($_POST['daily-submission'])){
     <link rel="stylesheet" href="../css/style.css" />
     <link rel="stylesheet" href="../css/form-style.css" />
     
-    <title>View Services</title>
+    <title>Enroll</title>
     <!--Internal CSS-->
     <style>
 
     </style>
   </head> 
+</head>
 <body>
      <!--NavBar-->
      <nav class="navbar navbar-expand-sm navbar-dark bg-danger">
@@ -101,58 +108,27 @@ if(isset($_POST['daily-submission'])){
                 </div>
         </div>
     </nav>
-    <!--Form Sections-->
+    <!--End of NavBar-->
     <section class="forms-sections mt-4 mb-4">
             <div class="container">
-              <h1 class="form-title text-center">Please Select A subscription </h1>
                     <div class="row">
-                            <div class="col-md-4 mb-3">
-                                <div class="card border border-danger">
+
+                            <div class="col-md-6 m-auto">
+                            <div class="card border border-danger">
+                                       
                                         <div class="card-header bg-danger">
-                                                <h1 class="form-title text-center text-white">Daily </h1>
+                                                <h1 class="text-center text-white form-title"> Today's &nbsp;<?php echo $gc_name?>&nbsp; Class</h1>
                                         </div>
                                         <div class="card-body">
-                                                <form action="subscribe.php" method="post">
-                                                        <label class="form-field" for="start-date">Start Date</label>
-                                                        <input type="date" class="form-control form-field" name="start-date" id="" min="<?php echo date("Y-m-d");?>">
+                                                <form action="enroll.php?id=<?php echo $gym_class_array['id'];?>" method="post">
+                                                        <label for="mements" class="form-field">Choose an appropriate time</label>
+                                                        <select name="moment" class="form-select form-field" aria-label="Default select example">
+                                                                                        <option selected>Please Choose One</option> 
+                                                                                        <option value="Morning">9.00am - 12.00pm</option>
+                                                                                        <option value="Evening">6.00pm - 8.00pm</option>
+                                                        </select>
                                                         <br>
-                                                        <input type="number" class="form-control form-field" min="1" max="6" name="daily" id="" placeholder="Number of Days" >
-                                                        <br>
-                                                        <button name="daily-submission" class="form-control form-button text-white btn btn-danger" type="submit"  >Subscribe</button>
-                                                </form>
-                                        </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4 mb-3">
-                                <div class="card border border-danger">
-                                        <div class="card-header bg-danger">
-                                                <h1 class="form-title text-center text-white">Monthly </h1>
-                                        </div>
-                                        <div class="card-body">
-                                                <form action="subscribe.php" method="post">
-                                                       <label class="form-field" for="start-date">Start Date</label>
-                                                        <input type="date" class="form-field form-control" name="start-month-date" id="" min="<?php echo date("Y-m-d");?>">
-                                                        <br>
-                                                        <input type="number" class="form-field form-control" min="1" max="12" name="monthly" id=""  placeholder="Number of Months">
-                                                        <br>
-                                                        <button name="monthly-submission" class="form-control form-button text-white btn btn-danger" type="submit">Subscribe</button>
-                                                </form>
-                                        </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4 mb-3">
-                                <div class="card border border-danger">
-                                        <div class="card-header bg-danger">
-                                                <h1 class="form-title text-center text-white">Weekly </h1>
-                                        </div>
-                                        <div class="card-body">
-                                                <form action="subscribe.php" method="post">
-                                                        <label class="form-field" for="start-date">Start Date</label>
-                                                        <input type="date" class="form-control form-field" name="start-week-date" id="" min="<?php echo date("Y-m-d");?>">
-                                                        <br>
-                                                        <input type="number" class="form-control form-field" min="1" max="3" name="weekly" id="" placeholder="Number of Weeks">
-                                                        <br>
-                                                        <button name="weekly-submission" class="form-control form-button text-white btn btn-danger" type="submit">Subscribe</button>
+                                                        <button name="subscription" class="form-control form-button text-white btn btn-danger" type="submit"  >Subscribe</button>
                                                 </form>
                                         </div>
                                 </div>
@@ -160,8 +136,6 @@ if(isset($_POST['daily-submission'])){
                     </div>
             </div>
     </section>
-
-    <!--End Form Sections-->
 
     <a href="#" class="scrollup  text-dark"><i class="fas fa-arrow-up"></i></a>
     <!--Footer-->
@@ -254,3 +228,6 @@ if(isset($_POST['daily-submission'])){
     </script>
    <script src="../js/scroll_up.js"> </script>
   </body>
+        
+</body>
+</html>

@@ -180,6 +180,18 @@ class Service {
         }
       }
 
+      public function getPriceById($id){
+        try{      
+                $stmt = $this->dbConn->prepare('SELECT service_price FROM '.$this->tableName. ' WHERE service_id = :service_id');
+                $stmt->execute(['service_id'=> $id]);
+                $single_price = $stmt->fetch();
+                //return the row containing the id 
+                return $single_price['service_price'];
+                }catch(PDOException $e){
+                        echo $e->getMessage();
+                }
+      }
+
 
      #Image Related Functions
         //Functions to handle the complete process of saving an image and its releveant information into the database.

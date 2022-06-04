@@ -1,3 +1,20 @@
+<?php
+include("../../includes/initialize.php");
+$sess = new Session();
+
+$gc = new GymClass();
+$enrollment = new Enrollment();
+$user = new User();
+
+$custom_user = $user->getUserById(13);
+$custom_user["fname"];
+$day = date('Y-m-d');
+echo $day;
+$day_enrollment = $enrollment->viewEnrollmentsByTrainerId(6,$day);
+// print_r($day_enrollment);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -17,6 +34,8 @@
      integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
      crossorigin="anonymous"
    />
+   <!--cdn datatables-->
+   <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css"/>
     <!--Custom CSS link-->
     <link rel="icon" href="../icons/dumbbell.png" type="image/png" />
     <link rel="stylesheet" href="../css/style.css" />
@@ -67,16 +86,50 @@
                 </div>
         </div>
     </nav>
-    <!---View Trainees -->
-    <section class="view-trainees">
+    <section class="table-section mt-4 mb-4">
         <div class="container">
-          <div class="row">
-            <div class="col-md-8 m-auto">
-              
-            </div>
-          </div>
+                <div class="row">
+                          <h1 id="form-header" class="text-center">View My Trainees</h1>
+                        <div class="col-md-8 m-auto">
+                                <table id="service-table" class="table table-striped border border-dark">
+                                        <thead class="text-white bg-danger text-center">
+
+                                                <tr>
+                                                        <th id="table-heading" scope="col">Gym Class</th>
+                                                        <th id="table-heading" scope="col">FName</th>
+                                                        <th id="table-heading" scope="col">LName</th>
+                                                        <th id="table-heading" scope="col">Email</th>
+                                                        <th id="table-heading" scope="col">Phone</th>
+                                                        <th id="table-heading" scope="col">Moment</th>
+                                                        <th id="table-heading" scope="col">#</th>
+                                                        
+
+                                                </tr>    
+                                        </thead>
+                                        <tbody class="text-center">
+                                                <?php
+                                                                                            
+                                                foreach($day_enrollment  as $de){
+                                                echo "<tr class ='col'>
+                                                <td class='form-text'>$de[gym_class_name]</td>
+                                                <td class='form-text' >$de[fname]</td>
+                                                <td class='form-text' >$de[lname]</td>
+                                                <td class='form-text' >$de[email]</td>
+                                                <td class='form-text' >$de[phone]</td>  
+                                                <td class='form-text' >$de[moment]</td> 
+                                                <td ><a class='btn btn-danger' href='send_mail.php?user_id=$de[user_id]'>Send Program</a></td>
+                                                </tr>"
+                                                ;     
+                                                }
+                                                ?>     
+                                        </tbody>
+                                </table>
+                        </div>
+
+                </div>
+       
         </div>
-    </section>
+    </section>   
     <!--End View Trainees-->
 
 <a href="#" class="scrollup  text-dark"><i class="fas fa-arrow-up"></i></a>
@@ -161,9 +214,15 @@
     integrity="sha512-WNZwVebQjhSxEzwbettGuQgWxbpYdoLf7mH+25A7sfQbbxKeS5SQ9QBf97zOY4nOlwtksgDA/czSTmfj4DUEiQ=="
     crossorigin="anonymous"
   ></script>
+
+    <!--Data Tables JS-->
+  <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+  <!--End Data Tables-->
     <script>
       //JQuery for setting the current year
       $("#year").text(new Date().getFullYear());
+      $('#service-table').DataTable();
     </script>
    <script src="../js/scroll_up.js"> </script>
   </body>
