@@ -16,7 +16,6 @@ $role = $sess->getRole();
 $s1 = $services->getServiceById($id);
 $price = $services->getPriceById($id);
 $service_name = $s1["service_name"];
-echo $service_name;
 
 
 if(isset($_POST['subscription'])){
@@ -64,7 +63,7 @@ if(isset($_POST['subscription'])){
     <link rel="stylesheet" href="../css/style.css" />
     <link rel="stylesheet" href="../css/form-style.css" />
     
-    <title>View Services</title>
+    <title>Subscribe</title>
     <!--Internal CSS-->
     <style>
 
@@ -97,10 +96,7 @@ if(isset($_POST['subscription'])){
                 <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav ms-auto">
                                 <li class="nav-item">
-                                <a class="nav-link active" href="create_account.php">Account</a>
-                                </li>
-                                <li class="nav-item">
-                                <a class="nav-link" href="view_services.php">Services</a>
+                                <a class="nav-link active" href="view_services.php">Services</a>
                                 </li>
                                 <li class="nav-item">
                                   <a

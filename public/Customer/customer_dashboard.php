@@ -135,6 +135,46 @@ $sess->check_user_login($role,"Customer");
                   <li><a class="dropdown-item" href="#">Logout</a></li>
                 </ul>
               </li>
+              <li class="nav-item dropdown">
+                                  <a class="nav-link dropdown-toggle active" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Customer
+                                  </a>
+                                  <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                                      <li><a class="dropdown-item active" href="customer_dashboard.php">Dashboard</a></li>
+                                      <li><hr class="dropdown-divider"></li>
+                                      <li><a class="dropdown-item " href="customer_account.php">Account</a>
+                                      </li>         
+                                  </ul>
+                              </li>
+                              <li class="nav-item dropdown">
+                                  <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Services
+                                  </a>
+                                  <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                                      <li><a class="dropdown-item" href="view_services.php">Our Services</a></li>
+                                      <li><hr class="dropdown-divider"></li>
+                                      <li><a class="dropdown-item" href="pay_subscription.php">Pay</a>
+                                      </li>         
+                                  </ul>
+                              </li>
+                              <li class="nav-item dropdown">
+                                  <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Gym Class
+                                  </a>
+                                  <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                                      <li><a class="dropdown-item" href="view_gym_class.php">Gym Class</a></li>
+                                      </li>         
+                                  </ul>
+                              </li>
+
+                              <li class="nav-item">
+                                  <a
+                                    class="nav-link "
+                                    aria-current="page"
+                                    href="../logout.php"
+                                    >Logout</a
+                                  >
+                              </li>
             </ul>
           </div>
         </nav>

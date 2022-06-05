@@ -70,21 +70,46 @@ $s1 = $services->getAllServices();
                         </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav ms-auto">
-                                <li class="nav-item">
-                                <a class="nav-link active" href="create_account.php">Account</a>
-                                </li>
-                                <li class="nav-item">
-                                <a class="nav-link" href="view_services.php">Services</a>
-                                </li>
-                                <li class="nav-item">
+                        <li class="nav-item dropdown">
+                                  <a class="nav-link dropdown-toggle " href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Customer
+                                  </a>
+                                  <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                                      <li><a class="dropdown-item" href="customer_dashboard.php">Dashboard</a></li>
+                                      <li><hr class="dropdown-divider"></li>
+                                      <li><a class="dropdown-item " href="customer_account.php">Account</a>
+                                      </li>         
+                                  </ul>
+                              </li>
+                              <li class="nav-item dropdown">
+                                  <a class="nav-link dropdown-toggle active" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Services
+                                  </a>
+                                  <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                                      <li><a class="dropdown-item active" href="view_services.php">Our Services</a></li>
+                                      <li><hr class="dropdown-divider"></li>
+                                      <li><a class="dropdown-item" href="pay_subscription.php">Pay</a>
+                                      </li>         
+                                  </ul>
+                              </li>
+                              <li class="nav-item dropdown">
+                                  <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Gym Class
+                                  </a>
+                                  <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                                      <li><a class="dropdown-item" href="view_gym_class.php">Gym Class</a></li>
+                                      </li>         
+                                  </ul>
+                              </li>
+
+                              <li class="nav-item">
                                   <a
                                     class="nav-link "
                                     aria-current="page"
                                     href="../logout.php"
                                     >Logout</a
                                   >
-                                </li>
-                                
+                              </li>
                         </ul>
                 </div>
         </div>

@@ -89,11 +89,8 @@ if(isset($_POST['subscription'])){
                         </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav ms-auto">
-                                <li class="nav-item">
-                                <a class="nav-link active" href="create_account.php">Account</a>
-                                </li>
-                                <li class="nav-item">
-                                <a class="nav-link" href="view_services.php">Services</a>
+                        <li class="nav-item">
+                                <a class="nav-link active" href="view_gym_class.php">Gym Class</a>
                                 </li>
                                 <li class="nav-item">
                                   <a
