@@ -36,8 +36,9 @@ $user_array = $users->getAllUsers();
     <!--cdn datatables-->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css"/>
     <!--Custom CSS link-->
-    <link rel="icon" href="../../icons/dumbbell.png" type="image/png" />
+    
     <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="icon" href="../../icons/dumbbell.png" type="image/png" />
     <title>View User</title>
     <style>
       .table-section{
@@ -81,7 +82,9 @@ $user_array = $users->getAllUsers();
                                         <li><a class="dropdown-item active" href="view_user.php ">View Users</a></li>
                                         <li><hr class="dropdown-divider"></li>
                                         <li><a class="dropdown-item" href="create_user.php">Create Users</a>
-                                        </li>         
+                                        </li>  
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li><a class="dropdown-item " href="admin_account.php">Account</a>       
                                     </ul>
                                 </li>
                                 <li class="nav-item">

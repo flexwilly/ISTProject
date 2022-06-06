@@ -111,6 +111,8 @@ if(isset($_POST['create-user'])){
                                         <li><a class="dropdown-item " href="view_user.php ">View Users</a></li>
                                         <li><hr class="dropdown-divider"></li>
                                         <li><a class="dropdown-item active" href="create_user.php">Create Users</a>
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li><a class="dropdown-item " href="admin_account.php">Account</a>
                                         </li>         
                                     </ul>
                                 </li>

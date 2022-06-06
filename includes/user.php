@@ -149,6 +149,24 @@ class User{
             
         }
 
+        //Updates some parameters
+        public function upDateSome(){
+            $stmt = $this->dbConn->prepare('UPDATE '.$this->tableName. ' SET fname = :fname, lname = :lname,  phone = :phone, email = :email, gender = :gender WHERE id = :id');
+            
+            $stmt->bindParam(':fname',$this->firstname);
+            $stmt->bindParam(':lname',$this->lastname);
+            $stmt->bindParam(':phone',$this->phone);
+            $stmt->bindParam(':email',$this->email);
+            $stmt->bindParam(':gender',$this->gender); 
+            $stmt->bindParam(':id',$this->user_id);
+
+            if($stmt->execute()){
+                return true;
+            }else{
+                return false;
+            }
+        }
+
                //function to get all users
         public function getAllUsers(){
                 try{
@@ -181,7 +199,7 @@ class User{
         }
     
               //function to get users by id
-        public function getUserById($id){
+        public function getUserByID($id){
                 $stmt = $this->dbConn->prepare('SELECT * FROM '.$this->tableName. ' WHERE id = :id');
                 $stmt->execute(['id'=> $id]);
                 $single_user = $stmt->fetch();
@@ -206,6 +224,65 @@ class User{
                 return $user;
         }
     
+        //functions to update a single image without the rest of the text
+         //Update the image name only
+        public function update_img_only(){
+            try{
+            $sql = 'UPDATE '.$this->tableName. ' SET pic_name = :pic_name WHERE id = :id';
+            $stmt = $this->dbConn->prepare($sql);
+            $stmt->bindParam(':pic_name',$this->filename);
+            $stmt->bindParam(':id',$this->user_id);
+          if($stmt->execute()){
+            return true;
+          }else{
+            return false;
+          }
+        }catch(PDOException $e){
+          echo $e->getMessage();
+        } 
+        
+  
+       }
+       public function update_one_img($id){
+        //get user by id
+        $user = $this->getUserByID($id);  
+
+        // Can't save if there are pre-existing errors
+        if(!empty($this->errors)) { return false; }
+
+        // Can't save without filename and temp location
+        if(empty($this->getFileName()) || empty($this->getTempPath())) {
+                $this->errors[] = "The file location was not available.";
+                return false;
+        }
+        //path to the file in the images folder
+        $initial_path = SITE_ROOT .DS. 'public' .DS. $this->upload_dir .DS. $user['pic_name'];
+        // Determine the target_path i.e 
+        $target_path = SITE_ROOT .DS. 'public' .DS. $this->upload_dir .DS. $this->getFileName();
+
+
+        // Make sure a file doesn't already exist in the target location if it exists remove it
+        if(file_exists($initial_path)) {
+                $this->errors[] = "The file {$this->getFileName()} already exists.";
+                unlink($initial_path);
+        }
+        // Attempt to move the file 
+        if(move_uploaded_file($this->getTempPath(), $target_path)) {
+                // Success
+                // Save a corresponding entry to the database
+        if($this->update_img_only()) {
+        // We are done with temp_path, the file isn't there anymore
+        $myTempPath = $this->getTempPath();
+        unset($myTempPath);
+        return true;
+        }
+        } else {
+        // File was not moved.
+        $this->errors[] = "The file upload failed, possibly due to incorrect permissions on the upload folder.";
+        return false;
+        }
+    } 
+       
         //Functions to handle the complete process of saving an image and its releveant information into the database.
         //1.Pass in $_FILE(['uploade file ']) as an argument 
         //This function sets the values of the file ie tmp_path, filename, filetype

@@ -1,10 +1,10 @@
 <?php
-include("../../includes/initialize.php");
+include("../../../includes/initialize.php");
 $sess = new Session();
 //redirect user based on role
 $id = $sess->getId();
 $role = $sess->getRole();
-$sess->check_user_login($role,"Trainer");
+//$sess->check_user_login($role,"Admin");
 $user = new User();
 $user_arr = $user->getUserById($id);
 
@@ -67,22 +67,22 @@ if(isset($_POST['update-account'])){
    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css"/>
     <!--Custom CSS link-->
     
-    <link rel="stylesheet" href="../css/style.css" />
-    <link rel="stylesheet" href="../css/form-style.css" />
-    <link rel="icon" href="../icons/dumbbell.png" type="image/png" />
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="../../css/form-style.css" />
+    <link rel="icon" href="../../icons/dumbbell.png" type="image/png" />
 
     <title>Update Account</title>
     
   </head> 
 <body>
    <!--NavBar-->
-    <nav class="navbar navbar-expand-sm navbar-dark bg-danger">
+   <nav class="navbar navbar-expand-sm navbar-dark bg-danger">
       <div class="container-fluid">
-                <a href="../index.php"
+                <a href="../../index.php"
                 ><img
                 id="logo"
                 class="rounded-circle m-3"
-                src="../images/lion-50.png"
+                src="../../images/lion-50.png"
                 alt="logo"
                         /></a>
                 <a class="navbar-brand" href="#">Debbs Gym</a>
@@ -99,40 +99,40 @@ if(isset($_POST['update-account'])){
                         </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav ms-auto">
-                        <li class="nav-item dropdown">
-                                  <a class="nav-link dropdown-toggle active" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Trainer
-                                  </a>
-                                  <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-                                      <li><a class="dropdown-item" href="trainer_dashboard.php">Dashboard</a></li>
-                                      <li><hr class="dropdown-divider"></li>
-                                      <li><a class="dropdown-item active" href="trainer_account.php">Account</a></li>
-                                      </li>         
-                                  </ul>
-                              </li>
-                              <li class="nav-item dropdown">
-                                  <a class="nav-link dropdown-toggle " href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    My Trainees
-                                  </a>
-                                  <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-                                      <li><a class="dropdown-item active" href="view_trainees.php">Trainees</a></li>
-                                      </li>         
-                                  </ul>
-                              </li>                              
-                              <li class="nav-item">
-                                    <a
-                                      class="nav-link "
-                                      aria-current="page"
-                                      href="../logout.php"
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle active" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                      <?php echo $sess->getFName();?>
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                                        <li><a class="dropdown-item " href="view_user.php ">View Users</a></li>
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li><a class="dropdown-item " href="create_user.php">Create Users</a>
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li><a class="dropdown-item active" href="admin_account.php">Account</a>
+                                        </li>         
+                                    </ul>
+                                </li>
+                                <li class="nav-item">
+                                  <a
+                                    class="nav-link "
+                                    aria-current="page"
+                                    href="../admin_dashboard.php"
+                                    >Go To DashBoard</a
+                                  >
+                                </li>
+                                <li class="nav-item">
+                                  <a
+                                    class="nav-link "
+                                    aria-current="page"
+                                    href="../../logout.php"
                                     >Logout</a
                                   >
-                              </li>
-
-                                
+                                </li>                        
                         </ul>
                 </div>
         </div>
     </nav>
+
     <!--Update Account Section--->
     <section class="update_acc_form mt-4 mb-4">
             <div class="container">
@@ -143,7 +143,7 @@ if(isset($_POST['update-account'])){
                                                     <h1 class="text-center form-title text-white">Update Account</h1>
                                             </div>
                                             <div class="card-body">
-                                                    <form action="update_account.php?id=<?php echo $user_arr["id"];?>" method="post">
+                                                    <form action="update_account.php" method="post">
                                                      <div class="row">
                                                              <div class="col-md-6 mb-2">
                                                                      <input type="text" class="form-control form-field" placeholder="FirstName" name="fname" value="<?php echo $user_arr["fname"];?>" id="">
@@ -188,7 +188,7 @@ if(isset($_POST['update-account'])){
                                              </div>
                                              <div class="card-body">
                                                                 <div class="row mb-2">
-                                                                        <img src="../images/<?php echo $user_arr["pic_name"];?>" height="150px" width="100%">
+                                                                        <img src="../../images/<?php echo $user_arr["pic_name"];?>" height="150px" width="100%">
                                                                 </div>
                                                        <form action="update_account.php" method="post" enctype="multipart/form-data">
                                                                
@@ -301,7 +301,7 @@ if(isset($_POST['update-account'])){
       //JQuery for setting the current year
       $("#year").text(new Date().getFullYear());
     </script>
-   <script src="../js/scroll_up.js"> </script>
+   <script src="../../js/scroll_up.js"> </script>
   </body>
 </html>
 

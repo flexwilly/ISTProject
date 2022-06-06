@@ -7,8 +7,43 @@ $role = $sess->getRole();
 $sess->check_user_login($role,"Customer");
 $user = new User();
 $user_arr = $user->getUserById($id);
-?>
 
+//updating an image
+if(isset($_POST['img-update'])){
+  try{
+    $my_id = $user->setUser_id($id);
+    $formFile  = $_FILES['fileToUpload'];
+    $user->attach_file($formFile);
+    $user->update_one_img($my_id);
+  }catch(PDOException $e){
+    echo $e->getMessage();
+  }
+}
+
+
+if(isset($_POST['update-account'])){
+  $fname = htmlentities($_POST['fname']);
+  $lname = htmlentities($_POST['lname']);
+  $email = htmlentities($_POST['email']);
+  $gender = htmlentities($_POST['gender-select']);
+  $phone = htmlentities($_POST['phone']);
+
+  try{
+    $user->setUser_id($id);
+    $user->setFirstname($fname);
+    $user->setLastname($lname);
+    $user->setEmail($email);
+    $user->setGender($gender);
+    $user->setPhone($phone);
+    $user->upDateSome();
+
+  }catch(PDOException $e){
+    echo $e->getMessage();
+  }
+
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -28,10 +63,15 @@ $user_arr = $user->getUserById($id);
      integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
      crossorigin="anonymous"
    />
+   <!--cdn datatables-->
+   <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css"/>
     <!--Custom CSS link-->
-    <link rel="icon" href="../icons/dumbbell.png" type="image/png" />
+    
     <link rel="stylesheet" href="../css/style.css" />
-    <title>My Account</title>
+    <link rel="stylesheet" href="../css/form-style.css" />
+    <link rel="icon" href="../icons/dumbbell.png" type="image/png" />
+
+    <title>Update Account</title>
     
   </head> 
 <body>
@@ -105,35 +145,89 @@ $user_arr = $user->getUserById($id);
         </div>
     </nav>
 
-         <!--Accounts Section-->
-        <section class="account-section mb-4 mt-4">
-                <div class="container">
-                        <div class="row">
-                                <div class="col-md-6 m-auto ">
-                                        <div class="card border border-danger">
-                                                <div class="card-header bg-danger">
-                                                        <h1 class="text-center form-title text-white">My Account</h1>
-                                                </div>
-                                                 <img src="../images/<?php echo $user_arr['pic_name'];?>" class="card-img-top" alt="Profile" height="200">
-                                                <div class="card-body">
-                                                        <ul class="list-group list-group-flush">
-                                                                <li class="text-center list-group-item form-field"><?php echo $user_arr["fname"];?></li>
-                                                                <li class="text-center list-group-item form-field"><?php echo $user_arr["lname"];?></li>
-                                                                <li class="text-center list-group-item form-field"><?php echo $user_arr["email"];?></li>
-                                                                <li class="text-center list-group-item form-field"><?php echo $user_arr["gender"];?></li>
-                                                                <li class="text-center list-group-item form-field"><?php echo $user_arr["phone"];?></li>
-                                                                <li class="text-center list-group-item form-field "><a class="btn btn-danger text-white form-control form-button" href="update_account.php">Update Account</a></li>
-                                                                
-                                                        </ul>
-                                                </div>
-                                        </div>
-                                </div>
-                        </div>
-                </div>
-        </section>
-        <!--End Account Section-->
+    <!--Update Account Section--->
+    <section class="update_acc_form mt-4 mb-4">
+            <div class="container">
+                    <div class="row">
+                            <div class="col-md-6 mb-4">
+                                    <div class="card border border-danger">
+                                            <div class="card-header bg-danger">
+                                                    <h1 class="text-center form-title text-white">Update Account</h1>
+                                            </div>
+                                            <div class="card-body">
+                                                    <form action="update_account.php" method="post">
+                                                     <div class="row">
+                                                             <div class="col-md-6 mb-2">
+                                                                     <input type="text" class="form-control form-field" placeholder="FirstName" name="fname" value="<?php echo $user_arr["fname"];?>" id="">
+                                                             </div>
+                                                             <div class="col-md-6 mb-2">
+                                                                     <input type="text" class="form-control form-field" placeholder="LastName" name="lname" value="<?php echo $user_arr["lname"];?>" id="">
+                                                             </div>
+                                                     </div> 
+                                                     <div class="row ">
+                                                             <div class="col-md-6 mb-2">
+                                                                     <input type="email" class="form-control form-field" placeholder="Email" name="email" value="<?php echo $user_arr["email"];?>" id="">
+                                                             </div>
+                                                             <div class="col-md-6 mb-2">
+                                                                     <input type="text" class="form-control form-field" placeholder="Phone" name="phone" value="<?php echo $user_arr["phone"];?>" id="">
+                                                             </div>
+                                                     </div>
+                                                     <div class="row ">
+                                                             <div class="col-md-12 mb-2">
+                                                                    
+                                                                            <select name='gender-select' class="form-select form-field"    aria-label="Default select example">
+                                                                                <option  class='form-field' selected ><?php echo $user_arr["gender"];?></option>
+                                                                                <option  class='form-field' value="Male">Male</option>
+                                                                                <option  class='form-field' value="Female">Female</option>        
+                                                                            </select>
+                                                                    </div>                  
+                                                     </div>
+                                                     <div class="row ">
+                                                             <div class="col-md-12 mb-2">
+                                                                     <button class="btn btn-danger form-control form-button text-white" type="submit" name="update-account">Update Account</button>
+                                                             </div>
+                                                     </div>        
 
-        <a href="#" class="scrollup  text-dark"><i class="fas fa-arrow-up"></i></a>
+                                                    </form>
+                                            </div>
+                                    </div>
+
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                     <div class="card border border-danger">
+                                             <div class="card-header bg-danger">
+                                                        <h1 class="text-center form-title text-white">Update Image</h1>
+                                             </div>
+                                             <div class="card-body">
+                                                                <div class="row mb-2">
+                                                                        <img src="../images/<?php echo $user_arr["pic_name"];?>" height="150px" width="100%">
+                                                                </div>
+                                                       <form action="update_account.php" method="post" enctype="multipart/form-data">
+                                                               
+                                                              <div class="row mb-2">
+                                                                        <div class="col-md-12">
+                                                                                <small class="text-center">
+                                                                                <?php echo $user_arr['pic_name'];?>
+                                                                                </small>
+                                                                                <br>
+                                                                                <input name="fileToUpload" class="form-control form-field" type="file" id="formFile">              
+                                                                        </div>
+                                                              </div>
+                                                              <div class="row mb-2">
+                                                                      <div class="col-md-12">
+                                                                                <button class="btn btn-danger text-white form-control form-button" type="submit" name="img-update">Update Pic</button>
+                                                                      </div>
+                                                              </div>
+                                                       </form>
+                                             </div>
+                                     </div>
+                            </div>
+                    </div>
+            </div>
+    </section>
+    <!--End Update Account Section-->
+ 
+    <a href="#" class="scrollup  text-dark"><i class="fas fa-arrow-up"></i></a>
     <!--Footer-->
     <footer id="main-footer" class="bg-danger text-white">
       <div class="container">
@@ -219,7 +313,7 @@ $user_arr = $user->getUserById($id);
       //JQuery for setting the current year
       $("#year").text(new Date().getFullYear());
     </script>
-   <script src="../js/scroll_up.js"> </script>
+   <script src="../../js/scroll_up.js"> </script>
   </body>
 </html>
 

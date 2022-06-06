@@ -126,9 +126,9 @@ $sess->check_user_login($role,"Trainer");
                                   <i class="fas fa-user me-2"></i><?php echo $sess->getFName();?>
                                   </a>
                                   <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-                                      <li><a class="dropdown-item" href="trainer_dashboard.php">Dashboard</a></li>
+                                      <li><a class="dropdown-item active" href="trainer_dashboard.php">Dashboard</a></li>
                                       <li><hr class="dropdown-divider"></li>
-                                      <li><a class="dropdown-item active" href="trainer_account.php">Account</a></li>
+                                      <li><a class="dropdown-item " href="trainer_account.php">Account</a></li>
                                       </li>         
                                   </ul>
                               </li>
