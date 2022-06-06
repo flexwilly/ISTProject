@@ -1,5 +1,6 @@
 <?php
 include('../../../includes/initialize.php');
+$sess = new Session();
 $gym_class = new GymClass();
 
 ?>
@@ -53,23 +54,35 @@ $gym_class = new GymClass();
                                 <span class="navbar-toggler-icon"></span>
                         </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav ms-auto">
-                                <li class="nav-item">
-                                <a class="nav-link " href="create_service.php">Create Service</a>
-                                </li>
-                                <li class="nav-item">
-                                <a class="nav-link active" href="view_service.php">View Service</a>
-                                </li>
-                                <li class="nav-item">
-                                  <a
-                                    class="nav-link "
-                                    aria-current="page"
-                                    href="../../logout.php"
-                                    >Logout</a
-                                  >
-                                </li>
-                                
-                        </ul>
+                      <ul class="navbar-nav ms-auto">
+                                        <li class="nav-item dropdown">
+                                            <a class="nav-link dropdown-toggle active" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                              <?php echo $sess->getFName();?>
+                                            </a>
+                                            <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                                                <li><a class="dropdown-item active" href="view_gym_class.php ">View Gym Class</a></li>
+                                                <li><hr class="dropdown-divider"></li>
+                                                <li><a class="dropdown-item " href="create_gym_class.php">Create Gym Class</a>
+                                                </li>         
+                                            </ul>
+                                        </li>
+                                        <li class="nav-item">
+                                          <a
+                                            class="nav-link "
+                                            aria-current="page"
+                                            href="../admin_dashboard.php"
+                                            >Go To DashBoard</a
+                                          >
+                                        </li>
+                                        <li class="nav-item">
+                                          <a
+                                            class="nav-link "
+                                            aria-current="page"
+                                            href="../../logout.php"
+                                            >Logout</a
+                                          >
+                                        </li>                        
+                      </ul>
                 </div>
         </div>
     </nav>

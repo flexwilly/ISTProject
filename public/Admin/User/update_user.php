@@ -1,6 +1,6 @@
 <?php
 include("../../../includes/initialize.php");
-
+$sess = new Session();
 $id = $_GET['user_id'];
 $u1 = new User();
 $user_arr = $u1->getUserById($id);
@@ -93,12 +93,25 @@ if(isset($_POST['update'])){
                                 <span class="navbar-toggler-icon"></span>
                         </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav ms-auto">
-                                <li class="nav-item">
-                                <a class="nav-link active" href="create_user.php">Create User</a>
+                <ul class="navbar-nav ms-auto">                               
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle active" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                      <?php echo $sess->getFName();?>
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                                        <li><a class="dropdown-item active" href="view_user.php ">View Users</a></li>
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li><a class="dropdown-item" href="create_user.php">Create Users</a>
+                                        </li>         
+                                    </ul>
                                 </li>
                                 <li class="nav-item">
-                                <a class="nav-link" href="view_user.php">View User</a>
+                                  <a
+                                    class="nav-link "
+                                    aria-current="page"
+                                    href="../admin_dashboard.php"
+                                    >Go To DashBoard</a
+                                  >
                                 </li>
                                 <li class="nav-item">
                                   <a
@@ -107,8 +120,7 @@ if(isset($_POST['update'])){
                                     href="../../logout.php"
                                     >Logout</a
                                   >
-                                </li>
-                                
+                                </li>    
                         </ul>
                 </div>
         </div>

@@ -1,5 +1,15 @@
 <?php
-include('../../../includes/initialize.php');
+include("../../../includes/initialize.php");
+$sess = new Session();
+// echo "This is my id:" .$sess->getId();
+// echo"<br/>";
+// echo "This is my name: ".$sess->getFName();
+// echo "<br/>";
+// echo "This is my role: ".$sess->getRole();
+
+$role = $sess->getRole();
+//$sess->check_user_login($role,"Admin");
+
 $users= new User();
 $user_array = $users->getAllUsers();
 
@@ -62,12 +72,25 @@ $user_array = $users->getAllUsers();
                                 <span class="navbar-toggler-icon"></span>
                         </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav ms-auto">
-                                <li class="nav-item">
-                                <a class="nav-link " href="create_user.php">Create User</a>
+                        <ul class="navbar-nav ms-auto">                               
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle active" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                      <?php echo $sess->getFName();?>
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                                        <li><a class="dropdown-item active" href="view_user.php ">View Users</a></li>
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li><a class="dropdown-item" href="create_user.php">Create Users</a>
+                                        </li>         
+                                    </ul>
                                 </li>
                                 <li class="nav-item">
-                                <a class="nav-link active" href="view_user.php">View User</a>
+                                  <a
+                                    class="nav-link "
+                                    aria-current="page"
+                                    href="../admin_dashboard.php"
+                                    >Go To DashBoard</a
+                                  >
                                 </li>
                                 <li class="nav-item">
                                   <a
@@ -76,8 +99,7 @@ $user_array = $users->getAllUsers();
                                     href="../../logout.php"
                                     >Logout</a
                                   >
-                                </li>
-                                
+                                </li>    
                         </ul>
                 </div>
         </div>

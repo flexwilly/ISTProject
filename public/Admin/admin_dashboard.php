@@ -118,22 +118,17 @@ $sess->check_user_login($role,"Admin");
 
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-              <li class="nav-item dropdown">
-                <a
-                  class="nav-link dropdown-toggle second-text fw-bold"
-                  href="#"
-                  id="navbarDropdown"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  <i class="fas fa-user me-2"></i>John Doe
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="#">Profile</a></li>
-                  <li><a class="dropdown-item" href="#">Settings</a></li>
-                  <li><a class="dropdown-item" href="#">Logout</a></li>
-                </ul>
+              <li class="nav-item">
+                <a class="nav-link second-text fw-bold" href="#"><i class="fas fa-user me-2"></i><?php echo $sess->getFName();?></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="User/view_user.php">Users</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="Service/view_services.php">Services</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="GymClass/view_gym_class.php">GymClass</a>
               </li>
             </ul>
           </div>
