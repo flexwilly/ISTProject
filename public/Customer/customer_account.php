@@ -63,7 +63,7 @@ $user_arr = $user->getUserById($id);
                         <ul class="navbar-nav ms-auto">
                               <li class="nav-item dropdown">
                                   <a class="nav-link dropdown-toggle active" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Customer
+                                  </i><?php echo $sess->getFName();?>
                                   </a>
                                   <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
                                       <li><a class="dropdown-item" href="customer_dashboard.php">Dashboard</a></li>

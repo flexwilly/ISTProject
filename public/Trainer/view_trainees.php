@@ -1,16 +1,21 @@
 <?php
 include("../../includes/initialize.php");
+//Instantiation of classes
 $sess = new Session();
-
+$user = new User();
 $gc = new GymClass();
 $enrollment = new Enrollment();
-$user = new User();
 
-$custom_user = $user->getUserById(13);
-$custom_user["fname"];
+//session variables
+$id = $sess->getId();
+$role = $sess->getRole();
+$sess->check_user_login($role,"Trainer");
+
+//declare the date variable
 $day = date('Y-m-d');
-echo $day;
-$day_enrollment = $enrollment->viewEnrollmentsByTrainerId(6,$day);
+//$day = date('2022-06-04');
+
+$day_enrollment = $enrollment->viewEnrollmentsByTrainerId($id,$day);
 // print_r($day_enrollment);
 
 ?>
@@ -67,20 +72,35 @@ $day_enrollment = $enrollment->viewEnrollmentsByTrainerId(6,$day);
                         </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav ms-auto">
-                                <li class="nav-item">
-                                <a class="nav-link active" href="trainer_account.php">Account</a>
-                                </li>
-                                <li class="nav-item">
-                                <a class="nav-link" href="view_services.php">Services</a>
-                                </li>
-                                <li class="nav-item">
-                                  <a
-                                    class="nav-link "
-                                    aria-current="page"
-                                    href="../logout.php"
+                        <li class="nav-item dropdown">
+                                  <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Trainer
+                                  </a>
+                                  <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                                      <li><a class="dropdown-item" href="trainer_dashboard.php">Dashboard</a></li>
+                                      <li><hr class="dropdown-divider"></li>
+                                      <li><a class="dropdown-item active" href="trainer_account.php">Account</a></li>
+                                      </li>         
+                                  </ul>
+                              </li>
+                              <li class="nav-item dropdown">
+                                  <a class="nav-link dropdown-toggle active" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    My Trainees
+                                  </a>
+                                  <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                                      <li><a class="dropdown-item active" href="view_trainees.php">Trainees</a></li>
+                                      </li>         
+                                  </ul>
+                              </li>                              
+                              <li class="nav-item">
+                                    <a
+                                      class="nav-link "
+                                      aria-current="page"
+                                      href="../logout.php"
                                     >Logout</a
                                   >
-                                </li>
+                              </li>
+
                                 
                         </ul>
                 </div>

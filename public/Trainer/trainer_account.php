@@ -1,15 +1,13 @@
 <?php
 include("../../includes/initialize.php");
 $sess = new Session();
-$user = new User();
+//redirect user based on role
 $id = $sess->getId();
 $role = $sess->getRole();
 $sess->check_user_login($role,"Trainer");
+$user = new User();
 $user_arr = $user->getUserById($id);
-
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -60,21 +58,35 @@ $user_arr = $user->getUserById($id);
                                 <span class="navbar-toggler-icon"></span>
                         </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav ms-auto">
-                                <li class="nav-item">
-                                <a class="nav-link active" href="trainer_account.php">Account</a>
-                                </li>
-                                <li class="nav-item">
-                                <a class="nav-link" href="view_services.php">Services</a>
-                                </li>
-                                <li class="nav-item">
-                                  <a
-                                    class="nav-link "
-                                    aria-current="page"
-                                    href="../logout.php"
+                        <ul class="navbar-nav ms-auto">                                  
+                              <li class="nav-item dropdown">
+                                  <a class="nav-link dropdown-toggle active" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Trainer
+                                  </a>
+                                  <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                                      <li><a class="dropdown-item" href="trainer_dashboard.php">Dashboard</a></li>
+                                      <li><hr class="dropdown-divider"></li>
+                                      <li><a class="dropdown-item active" href="trainer_account.php">Account</a></li>
+                                      </li>         
+                                  </ul>
+                              </li>
+                              <li class="nav-item dropdown">
+                                  <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    My Trainees
+                                  </a>
+                                  <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                                      <li><a class="dropdown-item" href="view_trainees.php">Trainees</a></li>
+                                      </li>         
+                                  </ul>
+                              </li>                              
+                              <li class="nav-item">
+                                    <a
+                                      class="nav-link "
+                                      aria-current="page"
+                                      href="../logout.php"
                                     >Logout</a
                                   >
-                                </li>
+                              </li>
                                 
                         </ul>
                 </div>

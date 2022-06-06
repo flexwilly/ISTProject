@@ -1,14 +1,12 @@
 <?php
 include("../../includes/initialize.php");
+//Instantiation of classes
 $sess = new Session();
 $gc = new GymClass();
-// echo "This is my id:" .$sess->getId();
-// echo"<br/>";
-// echo "This is my name: ".$sess->getFName();
-// echo "<br/>";
-// echo "This is my role: ".$sess->getRole();
+
+//call class methods
 $role = $sess->getRole();
-//$sess->check_user_login($role,"Customer");
+$sess->check_user_login($role,"Customer");
 $gym_classes = $gc->view_all_classes();
 
 //print_r($service_array);
@@ -69,7 +67,7 @@ $gym_classes = $gc->view_all_classes();
                         <ul class="navbar-nav ms-auto">
                         <li class="nav-item dropdown">
                                   <a class="nav-link dropdown-toggle " href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Customer
+                                    <?php echo $sess->getFName();?>
                                   </a>
                                   <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
                                       <li><a class="dropdown-item" href="customer_dashboard.php">Dashboard</a></li>

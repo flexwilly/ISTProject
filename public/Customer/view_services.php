@@ -1,14 +1,11 @@
 <?php
 include("../../includes/initialize.php");
+//Instantiation of the classes
 $sess = new Session();
 $services = new Service();
-// echo "This is my id:" .$sess->getId();
-// echo"<br/>";
-// echo "This is my name: ".$sess->getFName();
-// echo "<br/>";
-// echo "This is my role: ".$sess->getRole();
+//Call the session & service variables
 $role = $sess->getRole();
-//$sess->check_user_login($role,"Customer");
+$sess->check_user_login($role,"Customer");
 $s1 = $services->getAllServices();
 
 //print_r($service_array);
@@ -72,7 +69,7 @@ $s1 = $services->getAllServices();
                         <ul class="navbar-nav ms-auto">
                         <li class="nav-item dropdown">
                                   <a class="nav-link dropdown-toggle " href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Customer
+                                    <?php echo $sess->getFName();?>
                                   </a>
                                   <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
                                       <li><a class="dropdown-item" href="customer_dashboard.php">Dashboard</a></li>
@@ -122,7 +119,7 @@ $s1 = $services->getAllServices();
             <h1 class="text-center form-title">Our Services</h1>
             <div class="row mb-2">   
                     <?php foreach($s1 as $service){?>
-                    <div class="col-md-4">
+                    <div class="col-md-4 mb-3">
                         <div class="card border border-danger">
                                 <div class="card-header bg-danger">
                                         <h1 class="form-title text-center text-white"><?php echo $service['service_name'];?></h1>

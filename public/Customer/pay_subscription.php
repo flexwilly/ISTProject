@@ -1,3 +1,12 @@
+<?php
+include("../../includes/initialize.php");
+$sess = new Session();
+$user = new User();
+$id = $sess->getId();
+$role = $sess->getRole();
+$sess->check_user_login($role,"Customer");
+$user_arr = $user->getUserById($id);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -54,7 +63,7 @@
                         <ul class="navbar-nav ms-auto">
                               <li class="nav-item dropdown">
                                   <a class="nav-link dropdown-toggle " href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Customer
+                                  </i><?php echo $sess->getFName();?>
                                   </a>
                                   <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
                                       <li><a class="dropdown-item" href="customer_dashboard.php">Dashboard</a></li>

@@ -1,23 +1,17 @@
 <?php
 include("../../includes/initialize.php");
+//instantiation
 $sess = new Session();
-
 $gc = new GymClass();
 $enrollment = new Enrollment();
 
-$id = $_GET['id'];
-
-// echo "This is my id:" .$sess->getId();
-// echo"<br/>";
-// echo "This is my name: ".$sess->getFName();
-// echo "<br/>";
-// echo "This is my role: ".$sess->getRole();
+//session variables
 $role = $sess->getRole();
-//$sess->check_user_login($role,"Customer");
-$gym_class_array = $gc->getGymClassById($id);
+$sess->check_user_login($role,"Customer");
 
+$id = $_GET['id'];
+$gym_class_array = $gc->getGymClassById($id);
 $gc_name = $gym_class_array["gym_class_name"];
-//echo $gc_name;
 
 
 if(isset($_POST['subscription'])){

@@ -1,23 +1,20 @@
 <?php
 include("../../includes/initialize.php");
+//Instantiation of the classes
 $sess = new Session();
-
 $services = new Service();
+$role = $sess->getRole();
+$sess->check_user_login($role,"Customer");
 
+//get the service_id from the url
 $id = $_GET['service_id'];
 
-// echo "This is my id:" .$sess->getId();
-// echo"<br/>";
-// echo "This is my name: ".$sess->getFName();
-// echo "<br/>";
-// echo "This is my role: ".$sess->getRole();
-$role = $sess->getRole();
-//$sess->check_user_login($role,"Customer");
+//using service class functions
 $s1 = $services->getServiceById($id);
 $price = $services->getPriceById($id);
 $service_name = $s1["service_name"];
 
-
+//handle the post request
 if(isset($_POST['subscription'])){
         $number_value = $_POST['number_value'];
         $start = date('Y-m-d H:i:s',strtotime($_POST['start-date']));
