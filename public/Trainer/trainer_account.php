@@ -100,15 +100,18 @@ $user_arr = $user->getUserById($id);
                                 <div class="col-md-6 m-auto ">
                                         <div class="card border border-danger">
                                                 <div class="card-header bg-danger">
-                                                        <h1 class="text-center text-white">My Account</h1>
+                                                        <h1 class="text-center form-title text-white">My Account</h1>
                                                 </div>
                                                  <img src="../images/<?php echo $user_arr['pic_name'];?>" class="card-img-top" alt="Profile" height="200">
                                                 <div class="card-body">
                                                         <ul class="list-group list-group-flush">
-                                                                <li class="text-center list-group-item"><?php echo $user_arr["fname"];?></li>
-                                                                <li class="text-center list-group-item"><?php echo $user_arr["lname"];?></li>
-                                                                <li class="text-center list-group-item"><?php echo $user_arr["email"];?></li>
-                                                                <li class="text-center list-group-item"><?php echo $user_arr["gender"];?></li>
+                                                                <li class="text-center list-group-item form-field"><?php echo $user_arr["fname"];?></li>
+                                                                <li class="text-center list-group-item form-field"><?php echo $user_arr["lname"];?></li>
+                                                                <li class="text-center list-group-item form-field"><?php echo $user_arr["email"];?></li>
+                                                                <li class="text-center list-group-item form-field"><?php echo $user_arr["gender"];?></li>
+                                                                <li class="text-center list-group-item form-field"><?php echo $user_arr["phone"];?></li>
+                                                                <li class="text-center list-group-item form-field "><a class="btn btn-danger text-white form-control form-button" href="update_account.php">Update Account</a></li>
+                                                                
                                                         </ul>
                                                 </div>
                                         </div>

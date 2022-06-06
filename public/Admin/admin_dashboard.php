@@ -30,6 +30,7 @@ $sess->check_user_login($role,"Admin");
       referrerpolicy="no-referrer"
     />
     <link rel="stylesheet" href="../css/dashboard.css" />
+    <link rel="icon" href="../icons/dumbbell.png" type="image/png" />
     <title>Admin Dashboard</title>
   </head>
   <body>
