@@ -1,6 +1,9 @@
 <?php
 include('../../../includes/initialize.php');
+#Session Protetion
 $sess = new Session();
+$role = $sess->getRole();
+$sess->admin_session_protection($role,"Admin");
 $services = new Service();
 
 ?>

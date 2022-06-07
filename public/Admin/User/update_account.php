@@ -2,9 +2,10 @@
 include("../../../includes/initialize.php");
 $sess = new Session();
 //redirect user based on role
-$id = $sess->getId();
 $role = $sess->getRole();
-//$sess->check_user_login($role,"Admin");
+$sess->admin_session_protection($role,"Admin");
+
+$id = $sess->getId();
 $user = new User();
 $user_arr = $user->getUserById($id);
 

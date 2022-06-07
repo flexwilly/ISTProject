@@ -5,6 +5,11 @@ $sess = new Session();
 //echo $created_by;
 //creating an instance of user class to access
 //user methods and properties
+
+//if not correct user redirect to the right location
+$role = $sess->getRole();
+$sess->admin_session_protection($role,"Admin");
+
 $id = $_GET['id'];
 $gym_class = new GymClass();
 $gym_class_array = $gym_class->getGymClassById($id);

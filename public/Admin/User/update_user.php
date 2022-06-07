@@ -1,6 +1,10 @@
 <?php
 include("../../../includes/initialize.php");
 $sess = new Session();
+#Redirect user based on role
+$role = $sess->getRole();
+$sess->admin_session_protection($role,"Admin");
+
 $id = $_GET['user_id'];
 $u1 = new User();
 $user_arr = $u1->getUserById($id);

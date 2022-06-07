@@ -1,6 +1,10 @@
 <?php
 include("../../../includes/initialize.php");
+#Session Protection
 $sess = new Session();
+$role = $sess->getRole();
+$sess->admin_session_protection($role,"Admin");
+
 $updated_by = $sess->getId();
 $id = $_GET['service_id'];
 $service = new Service();

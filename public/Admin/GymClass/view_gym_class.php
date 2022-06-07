@@ -1,6 +1,9 @@
 <?php
 include('../../../includes/initialize.php');
 $sess = new Session();
+#Session Protection
+$role = $sess->getRole();
+$sess->admin_session_protection($role,"Admin");
 $gym_class = new GymClass();
 
 ?>

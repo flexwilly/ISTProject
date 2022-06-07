@@ -5,9 +5,14 @@ $sess = new Session();
 //echo $created_by;
 //creating an instance of user class to access
 //user methods and properties
+$role = $sess->getRole();
+$sess->admin_session_protection($role,"Admin");
+
 $gym_class = new GymClass();
 $user = new User();
+
 $trainers = $user->getUserByRole('Trainer');
+
 
 
 

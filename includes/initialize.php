@@ -31,7 +31,8 @@ require_once(LIB_PATH.DS."contact.php");
 require_once(LIB_PATH.DS."gym_class.php");
 require_once(LIB_PATH.DS."enrollment.php");
 require_once(LIB_PATH.DS."email.php");
-
+require_once(LIB_PATH.DS."payment.php");
+require_once(LIB_PATH.DS."payment_config.php");
 
 
 ?>

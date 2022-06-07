@@ -1,6 +1,9 @@
 <?php
 include("../../../includes/initialize.php");
+#Session Protection
 $sess = new Session();
+$role = $sess->getRole();
+$sess->admin_session_protection($role,"Admin");
 $created_by = $sess->getId();
 //echo $created_by;
 //creating an instance of user class to access

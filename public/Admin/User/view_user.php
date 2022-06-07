@@ -1,14 +1,9 @@
 <?php
 include("../../../includes/initialize.php");
 $sess = new Session();
-// echo "This is my id:" .$sess->getId();
-// echo"<br/>";
-// echo "This is my name: ".$sess->getFName();
-// echo "<br/>";
-// echo "This is my role: ".$sess->getRole();
-
+#Redirect user based on role
 $role = $sess->getRole();
-//$sess->check_user_login($role,"Admin");
+$sess->admin_session_protection($role,"Admin");
 
 $users= new User();
 $user_array = $users->getAllUsers();

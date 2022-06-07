@@ -1,14 +1,8 @@
 <?php
 include("../../../includes/initialize.php");
 $sess = new Session();
-// echo "This is my id:" .$sess->getId();
-// echo"<br/>";
-// echo "This is my name: ".$sess->getFName();
-// echo "<br/>";
-// echo "This is my role: ".$sess->getRole();
-
 $role = $sess->getRole();
-//$sess->check_user_login($role,"Admin");
+$sess->admin_session_protection($role,"Admin");
 
 //creating an instance of user class to access
 //user methods and properties

@@ -116,7 +116,24 @@ class Session{
           return false;
         }
     }
+    #Admin Classes Session Protection
+    public function admin_session_protection($role,$module_role){
+            if($this-> is_logged_in()){
+                //check role
+                if($role == $module_role){
+                //if role matches return true
+                return true;
 
+                }else{
+                    //if role does not match redirect to login 
+                    header("location: ../../login.php");
+                    return false;
+                }             
+            }else{
+            header("location: ../../login.php");
+            return false;
+            }
+    }
 
 
 }
