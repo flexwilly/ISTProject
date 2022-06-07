@@ -9,6 +9,23 @@ if(isset($_POST['submit'])){
   $email = $_POST['email'];
   $message = $_POST['message'];
   $phone = $_POST['phone'];
+
+  $sendEMail= $email;
+
+  $body = "<html><body>";
+  $body .= "<p>First Name :".$firstname  ."</p>";
+  $body .= "<p>Last Name :".$lastname ."</p>";
+  $body .= "<p>Email : ". $email ."</p>";
+  $body .= "<p>Phone Number : ". $phone ."</p>";
+  $body .= "<p>Message : ". $message ."</p>";
+  $body .= "</body></html>"; 
+
+  if($email->sendMail($sendEMail,$subject,$body)){
+    echo "<script>alert('Message sent successfully')</script>"
+}else{
+    echo "<script>alert('Message failed')</script>"
+    }
+  
 }
 
 ?>
