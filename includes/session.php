@@ -8,6 +8,12 @@ class Session{
   private $role;
   private $firstname;
   private $lastname;
+  #########Payment related info####
+  private $start_date;
+  private $end_date;
+  private $service_id;
+  private $amount;
+  
 
   //class constructor 
  public  function __construct()
@@ -41,6 +47,19 @@ class Session{
   public function getRole(){
       return $this->role;
   }
+
+  #####Payment Related Setters and Getters####
+  public function setStart_date($start_date) { $this->start_date = $start_date; }
+  public function getStart_date() { return $this->start_date; }
+  public function setEnd_date($end_date) { $this->end_date = $end_date; }
+  public function getEnd_date() { return $this->end_date; }
+  public function setService_id($service_id) { $this->service_id = $service_id; }
+  public function getService_id() { return $this->service_id; }
+  public function setAmount($amount) { $this->amount = $amount; }
+  public function getAmount() { return $this->amount; }
+
+
+  ################
   //function to get the loggin status
   //checks whether the user is logged in or not
   public function is_logged_in() {
@@ -133,6 +152,14 @@ class Session{
             header("location: ../../login.php");
             return false;
             }
+    }
+
+    ####Set session values of a group of variables#
+    public function setPaymentVars($start_date,$end_date,$service_id,$amount){
+        $this->start_date = $_SESSION["start_date"] = $start_date;
+        $this->end_date = $_SESSION["end_date"] = $end_date;
+        $this->service_id = $_SESSION["service_id"] = $service_id;
+        $this->amount = $_SESSION["amount"] = $amount;
     }
 
 

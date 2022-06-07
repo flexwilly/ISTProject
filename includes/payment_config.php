@@ -15,4 +15,26 @@ $gateway = Omnipay::create('PayPal_Rest');
 $gateway->setClientId(CLIENT_ID);
 $gateway->setSecret(CLIENT_SECRET);
 $gateway->setTestMode(true); //set it to 'false' when go live
+
+function handlePayment($amount){
+        global $gateway;
+        try {
+                $response = $gateway->purchase(array(
+                    'amount' => $amount,
+                    'currency' => PAYPAL_CURRENCY,
+                    'returnUrl' => PAYPAL_RETURN_URL,
+                    'cancelUrl' => PAYPAL_CANCEL_URL,
+                ))->send();
+         
+                if ($response->isRedirect()) {
+                    $response->redirect(); // this will automatically forward the customer
+                } else {
+                    // not successful
+                    echo $response->getMessage();
+                }
+            } catch(Exception $e) {
+                echo $e->getMessage();
+            }
+}
+
 ?>

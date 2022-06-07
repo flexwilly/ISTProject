@@ -9,6 +9,7 @@ $sess->check_user_login($role,"Customer");
 //get the service_id from the url
 $id = $_GET['service_id'];
 
+
 //using service class functions
 $s1 = $services->getServiceById($id);
 $price = $services->getPriceById($id);
@@ -18,16 +19,22 @@ $service_name = $s1["service_name"];
 if(isset($_POST['subscription'])){
         $number_value = $_POST['number_value'];
         $start = date('Y-m-d H:i:s',strtotime($_POST['start-date']));
-        echo $number_value * $price;
+        $amount =  $number_value * $price;
+        
+        
+
         if($service_name == 'Daily'){
-        $end_date =  date('Y-m-d H:i:s',strtotime($start. "+ {$_POST['number_value']} days"));    
-        echo $end_date;    
+        $end_date =  date('Y-m-d H:i:s',strtotime($start. "+ {$_POST['number_value']} days")); 
+        $sess->setPaymentVars($start,$end_date,$id,$amount);   
+        handlePayment($sess->getAmount());   
         }else if($service_name == 'Weekly'){
-        $end_date =  date('Y-m-d H:i:s',strtotime($start. "+ {$_POST['number_value']} week"));    
-        echo $end_date;
+        $end_date =  date('Y-m-d H:i:s',strtotime($start. "+ {$_POST['number_value']} week"));
+        $sess->setPaymentVars($start,$end_date,$id,$amount);   
+        handlePayment($sess->getAmount());    
         }else if($service_name='Monthly'){
         $end_date =  date('Y-m-d H:i:s',strtotime($start. "+ {$_POST['number_value']} month"));    
-        echo $end_date;      
+        $sess->setPaymentVars($start,$end_date,$id,$amount);   
+        handlePayment($sess->getAmount());    
         }else{
            echo "<script>alert('Please try again');</script>";     
         }

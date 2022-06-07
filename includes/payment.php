@@ -13,7 +13,9 @@ class Payment{
         private $payment_status;
         private $user_id;
         private $service_id;
-        private $payment_date;
+        private $start_date;
+        private $end_date;
+        
         //database connection
         private $dbConn;
 
@@ -36,8 +38,12 @@ class Payment{
         public function getUser_id() { return $this->user_id; }
         public function setService_id($service_id) { $this->service_id = $service_id; }
         public function getService_id() { return $this->service_id; }
-        public function setPayment_date($payment_date) { $this->payment_date = $payment_date; }
-        public function getPayment_date() { return $this->payment_date; }
+        public function setStart_date($start_date) { $this->start_date = $start_date; }
+        public function getStart_date() { return $this->start_date; }
+        public function setEnd_date($end_date) { $this->end_date = $end_date; }
+        public function getEnd_date() { return $this->end_date; }
+
+       
 
 
         #constructor
@@ -52,7 +58,7 @@ class Payment{
         public function createPayment(){
 
         try{
-                $sql = 'INSERT INTO '.$this->tableName. ' VALUES(null, :payment_id, :payer_id, :payer_email, :amount, :currency, :payment_status, :user_id, :service_id, :payment_date)';
+                $sql = 'INSERT INTO '.$this->tableName. ' VALUES(null, :payment_id, :payer_id, :payer_email, :amount, :currency, :payment_status, :user_id, :service_id, :start_date, :end_date)';
                 $stmt = $this->dbConn->prepare($sql);
                 $stmt->bindParam(':payment_id',$this->payment_id);
                 $stmt->bindParam(':payer_id',$this->payer_id);
@@ -62,7 +68,9 @@ class Payment{
                 $stmt->bindParam(':payment_status',$this->payment_status);
                 $stmt->bindParam(':user_id',$this->user_id);
                 $stmt->bindParam(':service_id',$this->service_id);
-                $stmt->bindParam(':payment_date',$this->payment_date);
+                $stmt->bindParam(':start_date',$this->start_date);
+                $stmt->bindParam(':end_date',$this->end_date);
+               
                 if($stmt->execute()){
                     return true;
         
