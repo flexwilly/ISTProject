@@ -12,6 +12,7 @@ if(isset($_POST['update-password'])){
         try{
                 $user->updatePassword($email,$password);
                 echo "<script>alert('Password Updated Successfully');</script>";
+                echo "<script>window.location.href = 'login.php';</script>";
         }catch(PDOException $e){
                 echo $e->getMessage();
         }

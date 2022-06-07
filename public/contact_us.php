@@ -1,7 +1,7 @@
 <?php
 include("../includes/initialize.php");
 
-$contact = new Contact();
+$mail = new Email();
 
 if(isset($_POST['submit'])){
   $firstname = $_POST['firstname'];

@@ -100,9 +100,9 @@ class Payment{
 
         #Show Payments by user_id
         public function getPaymentById($id){
-                $stmt = $this->dbConn->prepare('SELECT * FROM '.$this->tableName. ' WHERE sys_user_id = :id');
+                $stmt = $this->dbConn->prepare('SELECT * FROM '.$this->tableName. ' WHERE user_id = :id ');
                 $stmt->execute(['id'=> $id]);
-                $single_payment = $stmt->fetch();
+                $single_payment = $stmt->fetchAll();
                 //return the row containing the id 
                 return $single_payment;
         }

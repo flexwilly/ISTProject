@@ -23,7 +23,8 @@ if(isset($_POST['login'])){
                  redirect_to("Trainer/trainer_dashboard.php");
         }else{
                 echo "<script>alert('Username/Password Incorrect');</script>";
-                redirect_to("login.php");
+                echo "<script>window.location.href = 'login.php';</script>";
+
         }
        
 }

@@ -127,7 +127,7 @@ if(isset($_POST['subscription'])){
                                         <div class="card-body">
                                                 <form action="subscription.php?service_id=<?php echo $s1['service_id'];?>" method="post">
                                                         <label class="form-field" for="start-date">Start Date</label>
-                                                        <input type="date" class="form-control form-field" name="start-date" required id="" min="<?php echo date("Y-m-d H:i:s");?>">
+                                                        <input type="date" class="form-control form-field" name="start-date" required id="" min = "<?php echo date("Y-m-d H:i:s");?>">
                                                         <br>
                                                         <input type="number" class="form-control form-field" min="1"  name="number_value" id="" placeholder="Number of Days/Weeks/Months" >
                                                         <br>
