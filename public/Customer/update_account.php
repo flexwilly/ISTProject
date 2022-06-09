@@ -117,7 +117,7 @@ if(isset($_POST['update-account'])){
                                   <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
                                       <li><a class="dropdown-item" href="view_services.php">Our Services</a></li>
                                       <li><hr class="dropdown-divider"></li>
-                                      <li><a class="dropdown-item" href="pay_subscription.php">Pay</a>
+                                      <li><a class="dropdown-item" href="payment_success.php">Payments</a>
                                       </li>         
                                   </ul>
                               </li>

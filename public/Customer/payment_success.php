@@ -127,7 +127,7 @@ if (array_key_exists('paymentId', $_GET) && array_key_exists('PayerID', $_GET)) 
                                   <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
                                       <li><a class="dropdown-item active" href="view_services.php">Our Services</a></li>
                                       <li><hr class="dropdown-divider"></li>
-                                      <li><a class="dropdown-item" href="pay_subscription.php">Pay</a>
+                                      <li><a class="dropdown-item" href="payment_success.php">Payments</a>
                                       </li>         
                                   </ul>
                               </li>
