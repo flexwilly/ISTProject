@@ -31,7 +31,14 @@ $gym_class = new GymClass();
     <!--Custom CSS link-->
     <link rel="icon" href="../../icons/dumbbell.png" type="image/png" />
     <link rel="stylesheet" href="../../css/style.css" />
-    <title>View Service</title>
+    <title>View Gym Class</title>
+    <style>
+    .table-section{
+        height: 400px;
+        width: 100%;
+        overflow: auto;
+      }
+    </style>
   </head> 
 <body>
    <!--NavBar-->

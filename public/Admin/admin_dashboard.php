@@ -131,6 +131,13 @@ $sess->check_user_login($role,"Admin");
               <li class="nav-item">
                 <a class="nav-link" href="GymClass/view_gym_class.php">GymClass</a>
               </li>
+              <li class="nav-item">
+                <a
+                     aria-current="page"
+                    href="../logout.php"
+                    >Logout</a
+                  >
+                </li> 
             </ul>
           </div>
         </nav>

@@ -14,7 +14,7 @@ $id = $_GET['id'];
 $gym_class = new GymClass();
 $gym_class_array = $gym_class->getGymClassById($id);
 
-print_r($gym_class_array);
+//print_r($gym_class_array);
 
 $user = new User();
 $trainers = $user->getUserByRole('Trainer');
@@ -137,85 +137,77 @@ if(isset($_POST['update-gym-class'])){
                 </div>
         </div>
     </nav>
-
-
-        <!--Create user section-->
-        <section class="create-service-form mt-4 mb-4">
-                <div class="container">
+      
+      <!--Updadte Gym Class Section---->
+        <section class="update-gym-class mt-4 mb-4">
+          <div class="container">
+            <div class="row">
+              <!--Update Class Details-->
+              <div class="col-md-6">
+                    <div class="card border border-danger">
+                        <div class="card-header bg-danger">
+                          <h1 class="text-center form-title">
+                            Update Gym Class Records
+                          </h1>
+                        </div>
+                        <div class="card-body">
+                      <form action="update_gym_class.php?id=<?php echo $gym_class_array['id'];?>" method="post" enctype="multipart/form-data">
                         <div class="row mb-2">
-                                <div class="col-md-6 m-auto mb-4">
-                                        <div class="card border border-danger">
-                                                <div class="card-header bg-danger">
-                                                        <h1 id="form-header" class=" text-center text-white">Create Gym Class</h1>
-                                                </div>
-                                                <div class="card-body">
-                                                        <form action="update_gym_class.php?id=<?php echo $gym_class_array['id'];?>" method="POST" enctype="multipart/form-data">        
-                                                                <div class="row">
-                                                                        <div class="col mb-2">
-                                                                                <input type="text" class="form-control form-text" name="gym-class-name" id="" value="<?php echo $gym_class_array['gym_class_name'];?>" placeholder="Service Name">
-                                                                        </div>
-                                                                        
-                                                                </div>
-                                                                <div class="row">
-                                                                    <div class="col mb-2">
-                                                                    <label for="exampleFormControlTextarea1" class="form-label form-text">Service Description</label>
-                                                                    <textarea class="form-control" id="exampleFormControlTextarea1" name="gym-class-desc" rows="3" ><?php echo $gym_class_array['gym_class_desc'];?></textarea>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="row">
-                                                                    <div class="col mb-2">
-                                                                    <label for="Trainers" class="form-label form-text">Trainers</label>
-                                                                            <select name='trainer-select' class="form-select" aria-label="Default select example">
-                                                                                <option  class='form-text' selected >Choose a trainer</option>
-                                                                                <?php foreach($trainers as $trainer){?>
-                                                                                <option class='form-text' value="<?php echo $trainer['id'];?>"><?php echo $trainer['fname']?></option>
-                                                                                <?php }?>
-                                                                            </select>
-                                                                    </div>
-                                                                </div>
-                                                               
-                                                                <div class="row">
-                                                                        <div class="col-md-12 mb-2">
-                                                                                <button id="form-button" class="form-control bg-danger text-white" type="submit" name="update-gym-class">Update Gym Class</button>
-                                                                </div>
-                                                                
-                                                        </form>        
-                                                </div>
-                                        </div>
-                                </div>
+                              <input type="text" class="form-control form-field" name="gym-class-name" id="" value="<?php echo $gym_class_array['gym_class_name'];?>" placeholder="Service Name">
                         </div>
-                        <div class="row ">
-                                <div class="container">
-                                        <div class="col-md-6 m-auto ">
-                                                <div class="card border border-danger ">
-                                                        <div class="card-header bg-danger text-white">
-                                                                <h2 class="text-center">
-                                                                        Change Image
-                                                                </h2>
-                                                        </div>
-                                                        <div class="card-body">     
-                                                        <img src="../../images/<?php echo $gym_class_array['pic_name']?>" height="50%" width="100%">
-                                                        <form action="update_gym_class.php?id=<?php echo $gym_class_array['id'];?>" method="post" enctype="multipart/form-data">
-                                                                        <div class="row">
-                                                                                <small class="text-center">
-                                                                                <?php echo $gym_class_array['pic_name'];?>
-                                                                                </small>
-                                                                                <div class="col mb-2">
-                                                                                <input name="fileToUpload" class="form-control form-text" type="file" id="formFile">
-                                                                                </div>
-                                                                        </div>
-                                                                        <div class="row">
-                                                                                <div class="col-md-12 mb-2">
-                                                                                        <button id="form-button" class="form-control bg-danger text-white" type="submit" name="change-img">Change Image</button>
-                                                                        </div>
-                                                        </form>
-                                                        </div>
-                                                </div>
+                        <div class="row mb-2">
+                        <label for="exampleFormControlTextarea1" class="form-label form-field">Service Description</label>
+                              <textarea class="form-control" id="exampleFormControlTextarea1" name="gym-class-desc" rows="3" ><?php echo $gym_class_array['gym_class_desc'];?>
+                              </textarea>
+                        </div>
+                        <div class="row-mb-2">
+                          <label for="Trainers" class="form-label form-text">Trainers</label>
+                          <select name='trainer-select' class="form-select" aria-label="Default select example">
+                              <option  class='form-text' selected >Choose a trainer</option>
+                                  <?php foreach($trainers as $trainer){?>
+                                    <option class='form-text' value="<?php echo $trainer['id'];?>"><?php echo $trainer['fname']?></option>
+                                  <?php }?>
+                            </select>
+                        </div>
+                        
+                        <div class="row mb-2">
+                                <button id="form-button" class="form-control bg-danger text-white" type="submit" name="update-gym-class">Update Gym Class
+                                </button>
+                        </div>
+                      </form>
 
-                                        </div>
-                                </div>
-                        </div>
+                  </div>
+                    </div>
+              </div>
+              <div class="col-md-6">
+                <!--Update Image Card-->
+                <div class="card  border border-danger">
+                  <div class="card-header bg-danger">
+                    <h1 class="text-center form-title">
+                      Update Gym Class Images
+                    </h1>
+                  </div>
+                  <div class="card-body">
+                    <div class="row mb-2">
+                       <img src="../../images/<?php echo $gym_class_array['pic_name']?>" height="200px" width="100%">
+                    </div>
+                  <form action="update_gym_class.php?id=<?php echo $gym_class_array['id'];?>" method="post" enctype="multipart/form-data">
+                    <div class="row mb-2">
+                      <small class="text-center">
+                        <?php echo $gym_class_array['pic_name'];?>
+                      </small>
+                      <br>
+                      <input name="fileToUpload" class="form-control form-field" type="file" id="formFile">
+                    </div>
+                    <div class="row mb-2">
+                      <button id="form-button" class="form-control bg-danger text-white" type="submit" name="change-img">Change Image</button>
+                    </div>
+                  </form>
+                  </div>
                 </div>
+              </div>
+            </div>
+          </div>
         </section>
 
         <!--Bootstrap JS-->

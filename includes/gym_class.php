@@ -2,7 +2,7 @@
 include('initialize.php');
 
 class GymClass {
-       protected $tableName = 'gymClass';
+       protected $tableName = 'gymclass';
        private $id ;
        private $gym_class_name;
        private $gym_class_desc;
